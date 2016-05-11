@@ -11,7 +11,8 @@ These scripts rely on a third party program, called Keyboard Maestro. Download i
 ##Script Installation:
 To install the script files, go to the file menu of Keyboard Maestro, and select Import Macros.
 
-A dialogue will appear asking you to choose a file. Navigate to the contents of the provided zip file, and choose >protools scripts.kmmacros>
+A dialogue will appear asking you to choose a file. Navigate to the contents of the provided zip file, and choose > protools scripts.kmmacros >
+
 If successful, Keyboard Maestro should announce, “successfully imported macros.”
 
 ##Note:
@@ -21,7 +22,7 @@ Keyboard Maestro is limited by a 30-day trial period. After this time, you will 
 
 Below is a list of commands, and their associated descriptions.
 
-Close any PT window that is not Mix or Edit: command option W
+Close any PT window that is not > Mix > or > Edit >: command option W
 
 simulate option click: control x
 
@@ -40,11 +41,16 @@ speak selection length: command 3
 Track Status: find out what tracks are armed, soloed, muted, or selected:
 
 option shift a: arm state
+
 option shift s: solo state
+
+option shift m: mute state
+
 option shift e: selection state
 
 speak track meter: option m
-speaks the meter level of the current track under the VoiceOver cursor
+
+This command speaks the meter level of the current track under the VoiceOver cursor
 
 unarm all tracks: option shift a, twice quickly
 
@@ -57,11 +63,15 @@ unmute all tracks: option shift m, twice quickly
 The shortcuts outlined above are the default assignments for the scripts. They can be changed based on personal preference. If you feel that you want to change a shortcut, open Keyboard Maestro and do the following:
 
 1. Find the Macro Groups scroll area and interact with it. Inside, find and select the protools macro group by pressing VO space on it.
-2. Stop interacting with this area and move to the right to the macros scroll area. Interact, and find the script with the shortcut you’d like to change. Press VO space once you’ve found it, and press tab.
+2. Stop interacting with this area and move to the right to the macros scroll area.
 
-This should move you inside the edit screen of the macro. VO right arrow, and you should see a button with the current shortcut for the script. To change it, simply type your new desired shortcut and then stop interacting with the edit area. Be careful not to press command tab here, as this will assign it self as a new shortcut.
+Interact, and find the script with the shortcut you’d like to change. Press VO space once you’ve found it, and press tab.
+
+This should move you inside the edit screen of the macro. VO right arrow, and you should see a button with the current shortcut for the script.
+
+To change it, simply type your new desired shortcut and then stop interacting with the edit area. Be careful not to press command tab here, as this will assign it self as a new shortcut.
 
 ####Known Issues
 
-1. checking the arm status of tracks does not report consistently. There is no work around for this presently, but it is due to the way that Pro Tools indicates whether a track is record enabled.
+1. Checking the arm status of tracks does not report consistently. There is no work around for this presently, but it is due to the way that Pro Tools indicates whether a track is record enabled.
 
