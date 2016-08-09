@@ -13,6 +13,95 @@
 				<key>Actions</key>
 				<array>
 					<dict>
+						<key>Action</key>
+						<string>MoveAndClick</string>
+						<key>Button</key>
+						<integer>0</integer>
+						<key>ClickCount</key>
+						<integer>1</integer>
+						<key>DisplayMatches</key>
+						<false/>
+						<key>DragHorizontalPosition</key>
+						<string>0</string>
+						<key>DragVerticalPosition</key>
+						<string>0</string>
+						<key>Fuzz</key>
+						<integer>15</integer>
+						<key>HorizontalPositionExpression</key>
+						<string>196</string>
+						<key>MacroActionType</key>
+						<string>MouseMoveAndClick</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>MouseDrag</key>
+						<string>None</string>
+						<key>Relative</key>
+						<string>Window</string>
+						<key>RelativeCorner</key>
+						<string>TopLeft</string>
+						<key>RestoreMouseLocation</key>
+						<false/>
+						<key>VerticalPositionExpression</key>
+						<string>47</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>482163083.14183003</real>
+				<key>ModificationDate</key>
+				<real>481732630.29769099</real>
+				<key>Name</key>
+				<string>access presets</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>35</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>4096</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>642A4F30-EE59-44E7-AB2A-A85EF1359C34</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<key>UID</key>
+		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>479078801.99380499</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
 						<key>DisplayKind</key>
 						<string>None</string>
 						<key>IncludeStdErr</key>
@@ -800,7 +889,7 @@ armCount = 0
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
 name = track.name()
-if (name.indexOf("Group List")&gt;-1|name.indexOf("master")&gt;-1|name.indexOf("aux")&gt;-1) continue
+if (name.indexOf("Group List")&gt;-1|name.indexOf("master")&gt;-1|name.indexOf("Aux")&gt;-1|name.indexOf("aux")&gt;-1) continue
 arm = track.buttons.byName("Track Record Enable")
 if (arm.value().indexOf("armed")&gt;-1) {
 msg = msg+name
@@ -823,22 +912,20 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>484258800.54165602</real>
+				<real>492471032.60590303</real>
 				<key>Name</key>
 				<string>Speak track arm state</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Tapped</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
 						<integer>0</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2560</integer>
-						<key>TapCount</key>
-						<integer>1</integer>
+						<integer>4608</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -905,7 +992,7 @@ track = tracks[t]
 name = track.name()
 text = vo.voCursor.textUnderCursor()
 if (name == text) {
-meter = track.sliders.byName("Peak").value()
+meter = track.buttons[7].value()
 vo.output (meter)
 break;
 }
@@ -923,7 +1010,7 @@ break;
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>482308351.36910301</real>
+				<real>492471172.47959</real>
 				<key>Name</key>
 				<string>speak track meter</string>
 				<key>Triggers</key>
@@ -1027,22 +1114,20 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>484258943.70314902</real>
+				<real>492470558.71117097</real>
 				<key>Name</key>
 				<string>speak track mute state</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Tapped</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
 						<integer>46</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2560</integer>
-						<key>TapCount</key>
-						<integer>1</integer>
+						<integer>4608</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1084,7 +1169,7 @@ vo.output (msg)
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>Window</string>
+						<string>None</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -1092,32 +1177,26 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>vo = Application("VoiceOver")
-app = Application.currentApplication()
+						<string>app = Application.currentApplication()
 app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
+mix = pt.windows[0]
+vo = Application("VoiceOver")
+rows = mix.tables.byName("Track List").rows
 msg = ""
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
-tracks = mix.tables.byName("Track List")
-selectionCount = 0
-for (t=0; t&lt;tracks.length; t++) {
-track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")&gt;-1) continue
-select = track.value")
-if (select.value().indexOf("Selected")&gt;-1) {
-msg = msg+name+", "
-selectionCount = selectionCount+1
+selectCount = 0
+for (i=0; i&lt;rows.length; i++) {
+name = rows[i].uiElements.at(1).buttons[0].name()
+if (name.indexOf("Selected")&gt;-1) {
+name = name.replace("Selected", "").replace("track", "")
+msg = msg+name+"."
+selectCount = selectCount+1
 }
 }
-if (soloCount==0) msg = msg+"No tracks are soloed."
-vo.output(msg)
+if (selectCount == 0)
+msg = "No tracks are currently selected."
+vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
@@ -1132,22 +1211,20 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>484258991.081747</real>
+				<real>492470596.10591602</real>
 				<key>Name</key>
 				<string>Speak Track Selection State</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Tapped</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
 						<integer>14</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2560</integer>
-						<key>TapCount</key>
-						<integer>1</integer>
+						<integer>4608</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1243,7 +1320,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>484259086.81502599</real>
+				<real>492470614.52573198</real>
 				<key>Name</key>
 				<string>speak track solo state</string>
 				<key>Triggers</key>
@@ -1256,7 +1333,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2560</integer>
+						<integer>4608</integer>
 						<key>TapCount</key>
 						<integer>1</integer>
 					</dict>
@@ -1323,7 +1400,7 @@ tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
 name = track.name()
-if (name.indexOf("Group List")&gt;-1|name.indexOf("master")&gt;-1|name.indexOf("auxiliary")&gt;-1) continue
+if (name.indexOf("Group List")&gt;-1|name.indexOf("master")&gt;-1|name.indexOf("aux")&gt;-1|name.indexOf("Aux")&gt;-1) continue
 arm = track.buttons.byName("Track Record Enable")
 if (arm.value().indexOf("armed")&gt;-1) {
 arm.click()
@@ -1344,22 +1421,20 @@ vo.output ("Unarmed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>484258830.40909201</real>
+				<real>492471777.03997099</real>
 				<key>Name</key>
 				<string>Unarm all tracks</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Tapped</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
 						<integer>0</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
 						<integer>2560</integer>
-						<key>TapCount</key>
-						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1413,6 +1488,7 @@ vo.output ("Unarmed all tracks.")
 app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
+vo = Application("VoiceOver")
 windows = pt.windows()
 for (i=0; i&lt;windows.length; i++) {
 if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
@@ -1430,7 +1506,7 @@ if (mute.value().indexOf("on")&gt;-1) {
 mute.click()
 }
 }
-app.say("unmuted all tracks.")</string>
+vo.output("unmuted all tracks.")</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -1444,26 +1520,116 @@ app.say("unmuted all tracks.")</string>
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>484259131.85877597</real>
+				<real>492472197.30937701</real>
 				<key>Name</key>
 				<string>Unmute All Tracks</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Tapped</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
 						<integer>46</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
 						<integer>2560</integer>
-						<key>TapCount</key>
-						<integer>1</integer>
 					</dict>
 				</array>
 				<key>UID</key>
 				<string>D76C31A2-3CBF-44E5-B185-35B622266EAD</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<key>UID</key>
+		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>479078801.99380499</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>app = Application.currentApplication()
+app.includeStandardAdditions = true
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+mix = pt.windows[0]
+vo = Application("VoiceOver")
+rows = mix.tables.byName("Track List").rows
+for (i=0; i&lt;rows.length; i++) {
+button = rows[i].uiElements.at(1).buttons[0]
+if (button.name().indexOf("Selected")&gt;-1) {
+button.click()
+}
+}
+msg = "Unselected all tracks."
+vo.output (msg)
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>484085123.07696998</real>
+				<key>ModificationDate</key>
+				<real>484085957.45541</real>
+				<key>Name</key>
+				<string>unselect all tracks</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>32</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>4096</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>86A0FD7F-74F1-441F-9906-37540D2398E8</string>
 			</dict>
 		</array>
 		<key>Name</key>
@@ -1543,22 +1709,20 @@ vo.output("unsoloed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>484259155.91448301</real>
+				<real>492472090.67391098</real>
 				<key>Name</key>
 				<string>unsolo all tracks</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Tapped</string>
+						<string>Pressed</string>
 						<key>KeyCode</key>
 						<integer>1</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
 						<integer>2560</integer>
-						<key>TapCount</key>
-						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
