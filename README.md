@@ -4,7 +4,7 @@ Welcome to the Pro Tools Accessibility Scripts. These scripts were developed to 
 This document is divided into headings for easier screen reader navigation. Read below to get started.
 #Note:
 
-The downloaded zip file, referenced in this read me, will automatically decompress itself into a folder on Mac OS. Please refer to this downloaded folder, called Pro Tools Accessibility Scripts Master, when reading this document.
+The downloaded zip file, referenced in this read me, will automatically decompress itself into a folder on Mac OS. Please refer to this downloaded folder, called "Pro Tools Accessibility Scripts Master", when reading this document.
 
 #Installation
 These scripts rely on a third party program, called Keyboard Maestro. Download instructions are below.
@@ -17,24 +17,24 @@ These scripts rely on a third party program, called Keyboard Maestro. Download i
 
 
 ##Script Installation
-To install the script files, go to the provided zip file, and open the file called Protools scripts.kmmacros.
+To install the script files, go to the provided zip file, and open the file called "Protools scripts.kmmacros"
 
-If successful, Keyboard Maestro should announce: Successfully imported macros.
+If successful, Keyboard Maestro should announce, "Successfully imported macros."
 
 ##Note:
 Keyboard Maestro is limited by a 30-day trial period. After this time, you will need to purchase a one-time license to continue using the program, and subsequently, the scripts.
 
 ##Setting Up More Advanced Script Functions:
 
-In future revisions and updates to this set of scripts, it will be necessary to utilize certain script libraries to perform functions. Currently, this only applies to the commands related to mouse click simulation, but it is a good idea to set up the folder structure now, for later use. To do this, follow the steps below:
+In future revisions and updates to this set of scripts, it will be necessary to utilize certain script libraries to perform functions. Currently, this only applies to the commands related to mouse click simulation, but it's a good idea to set up the folder structure now, for later use. To do this, follow the steps below:
 
 1. Go to the finder, and press command shift G, to open the go to folder window.
 
-Type ~/Library, and press enter. This should bring you to your User library folder, hidden by default.
+Type "~/Library", and press enter. This should bring you to your User library folder, hidden by default.
 
-2. Inside this folder, look for a folder called Script Libraries. If it doesn’t exist, please create it.
+2. Inside this folder, look for a folder called "Script Libraries." If it doesn’t exist, please create it.
 
-3. In the provided zip file, copy the file called KMV.scpt, and paste it into the Script Libraries folder.
+3. In the provided zip file, copy the file called "KMV.scpt", and paste it into the Script Libraries folder.
 
 
 ###Getting Started
@@ -91,4 +91,4 @@ To change it, simply type your new desired shortcut and then stop interacting wi
 
 * Checking the arm status of tracks does not report consistently. There is no work around for this presently, but it is due to the way that Pro Tools indicates whether a track is record enabled.
 
-* Track Meter command does not function. We’re currently working on this, and will have it fixed as soon as possible.
+* Track Meter command does not function. We're currently working on this, and will have it fixed as soon as possible.
