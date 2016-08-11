@@ -302,7 +302,7 @@ kmv.setKMV("y", y)
 				<key>CreationDate</key>
 				<real>482286422.39457399</real>
 				<key>ModificationDate</key>
-				<real>492622380.56899703</real>
+				<real>492643522.57502401</real>
 				<key>Name</key>
 				<string>Option Shift Click</string>
 				<key>Triggers</key>
@@ -311,11 +311,11 @@ kmv.setKMV("y", y)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>48</integer>
+						<integer>7</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>256</integer>
+						<integer>4352</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -508,7 +508,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>482306405.32502598</real>
+				<real>492643546.75225699</real>
 				<key>Name</key>
 				<string>Speak Selection End</string>
 				<key>Triggers</key>
@@ -521,7 +521,7 @@ vo.output (msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>256</integer>
+						<integer>2304</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -617,7 +617,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>482307707.59556103</real>
+				<real>492643561.225407</real>
 				<key>Name</key>
 				<string>Speak Selection Length</string>
 				<key>Triggers</key>
@@ -630,7 +630,7 @@ vo.output (msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>256</integer>
+						<integer>2304</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -720,7 +720,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492622236.15759403</real>
+				<real>492643627.95559001</real>
 				<key>Name</key>
 				<string>speak selection start</string>
 				<key>Triggers</key>
@@ -729,11 +729,11 @@ vo.output (msg)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>48</integer>
+						<integer>18</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>256</integer>
+						<integer>2304</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -903,7 +903,8 @@ track = tracks[t]
 name = track.name()
 text = vo.voCursor.textUnderCursor()
 if (name == text) {
-meter = track.buttons[7].value()
+sliders = track.sliders
+meter = sliders[sliders.length-1].attributes[2].value()
 vo.output (meter)
 break;
 }
@@ -921,7 +922,7 @@ break;
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>492471172.47959</real>
+				<real>492645914.371732</real>
 				<key>Name</key>
 				<string>speak track meter</string>
 				<key>Triggers</key>
@@ -1523,7 +1524,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>484085123.07696998</real>
 				<key>ModificationDate</key>
-				<real>492623225.16971701</real>
+				<real>492643667.02210301</real>
 				<key>Name</key>
 				<string>unselect all tracks</string>
 				<key>Triggers</key>
@@ -1532,11 +1533,11 @@ vo.output (msg)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>48</integer>
+						<integer>32</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>256</integer>
+						<integer>2560</integer>
 					</dict>
 				</array>
 				<key>UID</key>

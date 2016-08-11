@@ -1,5 +1,5 @@
 # Pro-Tools-Accessibility-Scripts
-#Welcome!
+#"Welcome!"
 Welcome to the Pro Tools Accessibility Scripts. These scripts were developed to enhance the usability of Pro Tools for VoiceOver users.
 This document is divided into headings for easier screen reader navigation. Read below to get started.
 #Note:
