@@ -903,7 +903,8 @@ track = tracks[t]
 name = track.name()
 text = vo.voCursor.textUnderCursor()
 if (name == text) {
-meter = track.buttons[7].value()
+sliders = track.sliders
+meter = sliders[sliders.length-1].attributes[2].value()
 vo.output (meter)
 break;
 }
@@ -921,7 +922,7 @@ break;
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>492471172.47959</real>
+				<real>492645914.371732</real>
 				<key>Name</key>
 				<string>speak track meter</string>
 				<key>Triggers</key>
