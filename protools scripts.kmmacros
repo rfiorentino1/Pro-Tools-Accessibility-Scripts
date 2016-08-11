@@ -13,95 +13,6 @@
 				<key>Actions</key>
 				<array>
 					<dict>
-						<key>Action</key>
-						<string>MoveAndClick</string>
-						<key>Button</key>
-						<integer>0</integer>
-						<key>ClickCount</key>
-						<integer>1</integer>
-						<key>DisplayMatches</key>
-						<false/>
-						<key>DragHorizontalPosition</key>
-						<string>0</string>
-						<key>DragVerticalPosition</key>
-						<string>0</string>
-						<key>Fuzz</key>
-						<integer>15</integer>
-						<key>HorizontalPositionExpression</key>
-						<string>196</string>
-						<key>MacroActionType</key>
-						<string>MouseMoveAndClick</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-						<key>MouseDrag</key>
-						<string>None</string>
-						<key>Relative</key>
-						<string>Window</string>
-						<key>RelativeCorner</key>
-						<string>TopLeft</string>
-						<key>RestoreMouseLocation</key>
-						<false/>
-						<key>VerticalPositionExpression</key>
-						<string>47</string>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>482163083.14183003</real>
-				<key>ModificationDate</key>
-				<real>481732630.29769099</real>
-				<key>Name</key>
-				<string>access presets</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>35</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>4096</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>642A4F30-EE59-44E7-AB2A-A85EF1359C34</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
-		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>479078801.99380499</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
 						<key>DisplayKind</key>
 						<string>None</string>
 						<key>IncludeStdErr</key>
@@ -391,7 +302,7 @@ kmv.setKMV("y", y)
 				<key>CreationDate</key>
 				<real>482286422.39457399</real>
 				<key>ModificationDate</key>
-				<real>482286453.19053102</real>
+				<real>492622380.56899703</real>
 				<key>Name</key>
 				<string>Option Shift Click</string>
 				<key>Triggers</key>
@@ -400,11 +311,11 @@ kmv.setKMV("y", y)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>7</integer>
+						<integer>48</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4608</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -494,7 +405,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>482306637.36233097</real>
+				<real>492622319.42819202</real>
 				<key>Name</key>
 				<string>Speak Current Position</string>
 				<key>Triggers</key>
@@ -507,7 +418,7 @@ vo.output (msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>256</integer>
+						<integer>2304</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -809,7 +720,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>482308092.03181797</real>
+				<real>492622236.15759403</real>
 				<key>Name</key>
 				<string>speak selection start</string>
 				<key>Triggers</key>
@@ -818,7 +729,7 @@ vo.output (msg)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>18</integer>
+						<integer>48</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -1612,7 +1523,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>484085123.07696998</real>
 				<key>ModificationDate</key>
-				<real>484085957.45541</real>
+				<real>492623225.16971701</real>
 				<key>Name</key>
 				<string>unselect all tracks</string>
 				<key>Triggers</key>
@@ -1621,11 +1532,11 @@ vo.output (msg)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>32</integer>
+						<integer>48</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4096</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>

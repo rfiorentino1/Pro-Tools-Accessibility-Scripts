@@ -45,16 +45,16 @@ Below is a list of commands, and their associated descriptions.
 
 - simulate option click: control x
 
-- simulate option shift click: control shift x
+- simulate option shift click: control command x
   - Note: for any click simulation to work properly, you need to scroll to the track that you want to work with by pressing VO f and typing the track number.
 
-- Speak current counter position: command 0
+- Speak current counter position: Option command 0
 
-- Speak selection start: command 1
+- Speak selection start: Option command 1
 
-- Speak selection end: command 2
+- Speak selection end: Option command 2
 
-- Speak selection length: command 3
+- Speak selection length: Option command 3
 
 - Track Status: find out what tracks are armed, soloed, muted, or selected:
 
@@ -72,7 +72,7 @@ Below is a list of commands, and their associated descriptions.
 
 - Unmute all tracks: option shift m
 
-- Unselect all tracks: Control U
+- Unselect all tracks: Option Shift U
 
 ###Changing Shortcuts
 
