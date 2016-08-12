@@ -878,7 +878,7 @@ vo.output (msg)
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>Window</string>
+						<string>None</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -922,7 +922,7 @@ break;
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>492645914.371732</real>
+				<real>492662301.741404</real>
 				<key>Name</key>
 				<string>speak track meter</string>
 				<key>Triggers</key>
