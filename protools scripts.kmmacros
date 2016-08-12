@@ -389,7 +389,7 @@ else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
 msg = msg+ms[0]+", "+ms[1]+". current position."
-}
+} else msg = current
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -405,7 +405,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492622319.42819202</real>
+				<real>492652158.91357702</real>
 				<key>Name</key>
 				<string>Speak Current Position</string>
 				<key>Triggers</key>
@@ -492,7 +492,7 @@ else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
 msg = msg+ms[0]+", "+ms[1]+". Selection endpoint."
-}
+} else msg = end
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -508,7 +508,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492643546.75225699</real>
+				<real>492652480.05874997</real>
 				<key>Name</key>
 				<string>Speak Selection End</string>
 				<key>Triggers</key>
@@ -601,7 +601,7 @@ else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
 msg = msg+ms[0]+", "+ms[1]+". Selection length."
-}
+} else msg = length
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -617,7 +617,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492643561.225407</real>
+				<real>492652512.92051297</real>
 				<key>Name</key>
 				<string>Speak Selection Length</string>
 				<key>Triggers</key>
@@ -672,7 +672,7 @@ vo.output (msg)
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>None</string>
+						<string>Window</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -704,7 +704,7 @@ else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
 msg = msg+ms[0]+", "+ms[1]+". Selection startpoint."
-}
+} else msg = start
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -720,7 +720,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492643627.95559001</real>
+				<real>492652625.86364102</real>
 				<key>Name</key>
 				<string>speak selection start</string>
 				<key>Triggers</key>
@@ -903,7 +903,8 @@ track = tracks[t]
 name = track.name()
 text = vo.voCursor.textUnderCursor()
 if (name == text) {
-meter = track.buttons[7].value()
+sliders = track.sliders
+meter = sliders[sliders.length-1].attributes[2].value()
 vo.output (meter)
 break;
 }
@@ -921,7 +922,7 @@ break;
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>492471172.47959</real>
+				<real>492645914.371732</real>
 				<key>Name</key>
 				<string>speak track meter</string>
 				<key>Triggers</key>
