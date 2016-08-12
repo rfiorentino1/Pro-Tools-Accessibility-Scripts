@@ -87,8 +87,13 @@ This should move you inside the edit screen of the macro. VO right arrow, and yo
 
 To change it, simply type your new desired shortcut and then stop interacting with the edit area. Be careful not to press command tab here, as this will assign it self as a new shortcut.
 
+
+####Reporting Issues:
+
+GitHub provides a convenient and reliable way to track and resolve issues. Please click [here](https://github.com/rfiorentino1/Pro-Tools-Accessibility-Scripts/issues), and search for your issue. If you don't find an open issue relating to your problem with the scripts, you can create a new one by clicking on "new issue" and filling out the required fields.
+
+
 ####Known Issues
 
 * Checking the arm status of tracks does not report consistently. There is no work around for this presently, but it is due to the way that Pro Tools indicates whether a track is record enabled.
 
-* Track Meter command does not function. We're currently working on this, and will have it fixed as soon as possible.
