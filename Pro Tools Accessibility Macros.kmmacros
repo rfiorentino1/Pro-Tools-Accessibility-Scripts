@@ -22,9 +22,7 @@
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
-vo = Application("VoiceOver")
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows()
@@ -54,7 +52,7 @@ vo.output (msg)</string>
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>482337315.513358</real>
+				<real>493056819.23291802</real>
 				<key>Name</key>
 				<string>close unwanted PT windows</string>
 				<key>Triggers</key>
@@ -119,8 +117,6 @@ vo.output (msg)</string>
 						<key>Text</key>
 						<string>kmv = Library("KMV")
 vo = Application("VoiceOver")
-app = Application.currentApplication()
-app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 bounds = vo.voCursor.bounds()
@@ -178,7 +174,7 @@ kmv.setKMV("y", y)
 				<key>CreationDate</key>
 				<real>482163083.14183003</real>
 				<key>ModificationDate</key>
-				<real>482164708.77890903</real>
+				<real>493056857.53666502</real>
 				<key>Name</key>
 				<string>option click</string>
 				<key>Triggers</key>
@@ -243,8 +239,6 @@ kmv.setKMV("y", y)
 						<key>Text</key>
 						<string>kmv = Library("KMV")
 vo = Application("VoiceOver")
-app = Application.currentApplication()
-app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 bounds = vo.voCursor.bounds()
@@ -302,7 +296,7 @@ kmv.setKMV("y", y)
 				<key>CreationDate</key>
 				<real>482286422.39457399</real>
 				<key>ModificationDate</key>
-				<real>492643522.57502401</real>
+				<real>493056898.40046501</real>
 				<key>Name</key>
 				<string>Option Shift Click</string>
 				<key>Triggers</key>
@@ -366,16 +360,10 @@ kmv.setKMV("y", y)
 						<string></string>
 						<key>Text</key>
 						<string>vo = Application("VoiceOver")
-app = Application.currentApplication()
-app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
@@ -401,7 +389,7 @@ break;
 				<key>CreationDate</key>
 				<real>492698480.42757702</real>
 				<key>ModificationDate</key>
-				<real>492698562.11836803</real>
+				<real>493059077.03052002</real>
 				<key>Name</key>
 				<string>Reset Meter</string>
 				<key>Triggers</key>
@@ -458,7 +446,7 @@ break;
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>None</string>
+						<string>Window</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -466,22 +454,16 @@ break;
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
+windows = pt.windows
+edit = windows.whose({name:{_beginsWith:"Edit:"}})[0]
 msg = ""
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
 current = edit.groups.byName("Counter Display Cluster").textFields.byName("Main Counter").value()
 if (current.indexOf("|")&gt;-1) {
 mbt = current.split(/\| /)
-msg = msg+"bar "+mbt[0]+", beat"+mbt[1]+", tick"+mbt[2]+". Current position."
+msg = msg+"bar "+mbt[0]+", beat"+mbt[1]+", tick"+mbt[2]
 }
 else if (current.indexOf(".")&gt;-1) {
 ms = current.split(/:/)
@@ -489,8 +471,9 @@ if (ms[0]==1) ms[0] = ms[0]+" minute"
 else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
-msg = msg+ms[0]+", "+ms[1]+". current position."
+msg = msg+ms[0]+", "+ms[1]
 } else msg = current
+msg += ". current."
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -506,7 +489,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492652158.91357702</real>
+				<real>493060454.22399199</real>
 				<key>Name</key>
 				<string>Speak Current Position</string>
 				<key>Triggers</key>
@@ -569,22 +552,16 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
-windows = pt.windows()
+windows = pt.windows
+edit = windows.whose({name:{_beginsWith:"Edit:"}})[0]
 msg = ""
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
 end = edit.groups.byName("Counter Display Cluster").textFields.byName("Edit Selection End").value()
 if (end.indexOf("|")&gt;-1) {
 mbt = end.split(/\| /)
-msg = msg+"bar "+mbt[0]+", beat"+mbt[1]+", tick"+mbt[2]+". Selection Endpoint."
+msg = msg+"bar "+mbt[0]+", beat"+mbt[1]+", tick"+mbt[2]
 }
 else if (end.indexOf(".")&gt;-1) {
 ms = end.split(/:/)
@@ -592,8 +569,9 @@ if (ms[0]==1) ms[0] = ms[0]+" minute"
 else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
-msg = msg+ms[0]+", "+ms[1]+". Selection endpoint."
+msg = msg+ms[0]+", "+ms[1]
 } else msg = end
+msg += ". end"
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -609,7 +587,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492652480.05874997</real>
+				<real>493060672.662902</real>
 				<key>Name</key>
 				<string>Speak Selection End</string>
 				<key>Triggers</key>
@@ -664,7 +642,7 @@ vo.output (msg)
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>None</string>
+						<string>Window</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -672,18 +650,12 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
-vo = Application("VoiceOver")
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
+windows = pt.windows
+edit = windows.whose({name:{_beginsWith:"Edit:"}})[0]
 msg = ""
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
 length = edit.groups.byName("Counter Display Cluster").textFields.byName("Edit Selection Length").value()
 if (length.indexOf("|")&gt;-1) {
 mbt = length.split(/\| /)
@@ -693,16 +665,16 @@ if (mbt[1]==1) mbt[1] = mbt[1]+" beat"
 else mbt[1] = mbt[1]+"beats"
 if (mbt[2]==1) mbt[2] = mbt[2]+" tick"
 else mbt[2] = mbt[2]+"ticks"
-msg = msg+mbt[0]+mbt[1]+mbt[2]+". Selection length."
-}
-else if (length.indexOf(".")&gt;-1) {
+msg = msg+mbt[0]+mbt[1]+mbt[2]
+} else if (length.indexOf(".")&gt;-1) {
 ms = length.split(/:/)
 if (ms[0]==1) ms[0] = ms[0]+" minute"
 else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
-msg = msg+ms[0]+", "+ms[1]+". Selection length."
+msg = msg+ms[0]+", "+ms[1]
 } else msg = length
+msg += ". length."
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -718,7 +690,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492652512.92051297</real>
+				<real>493060884.42209798</real>
 				<key>Name</key>
 				<string>Speak Selection Length</string>
 				<key>Triggers</key>
@@ -781,31 +753,25 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
+windows = pt.windows
+edit = windows.whose({name:{_beginsWith:"Edit:"}})[0]
 msg = ""
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
 start = edit.groups.byName("Counter Display Cluster").textFields.byName("Edit Selection Start").value()
 if (start.indexOf("|")&gt;-1) {
 mbt = start.split(/\| /)
-msg = msg+"bar "+mbt[0]+", beat"+mbt[1]+", tick"+mbt[2]+". Selection startpoint."
-}
-else if (start.indexOf(".")&gt;-1) {
+msg = msg+"bar "+mbt[0]+", beat"+mbt[1]+", tick"+mbt[2]
+} else if (start.indexOf(".")&gt;-1) {
 ms = start.split(/:/)
 if (ms[0]==1) ms[0] = ms[0]+" minute"
 else ms[0] = ms[0]+"minutes"
 if (ms[1]==1) ms[1] = ms[1]+" second"
 else ms[1] = ms[1]+"seconds"
-msg = msg+ms[0]+", "+ms[1]+". Selection startpoint."
+msg = msg+ms[0]+", "+ms[1]
 } else msg = start
+msg += ". start."
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -821,7 +787,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>492652625.86364102</real>
+				<real>493061026.10155398</real>
 				<key>Name</key>
 				<string>speak selection start</string>
 				<key>Triggers</key>
@@ -884,18 +850,12 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
 msg = ""
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 armCount = 0
 for (t=0; t&lt;tracks.length; t++) {
@@ -924,7 +884,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>492471032.60590303</real>
+				<real>493059104.03025699</real>
 				<key>Name</key>
 				<string>Speak track arm state</string>
 				<key>Triggers</key>
@@ -979,7 +939,7 @@ vo.output (msg)
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>None</string>
+						<string>Window</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -988,16 +948,10 @@ vo.output (msg)
 						<string></string>
 						<key>Text</key>
 						<string>vo = Application("VoiceOver")
-app = Application.currentApplication()
-app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
@@ -1023,7 +977,7 @@ break;
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>492662301.741404</real>
+				<real>493057397.08605301</real>
 				<key>Name</key>
 				<string>speak track meter</string>
 				<key>Triggers</key>
@@ -1086,20 +1040,14 @@ break;
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
-vo = Application("VoiceOver")
-msg = ""
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 muteCount = 0
+msg = ""
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
 name = track.name()
@@ -1127,7 +1075,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>492470558.71117097</real>
+				<real>493058970.96696198</real>
 				<key>Name</key>
 				<string>speak track mute state</string>
 				<key>Triggers</key>
@@ -1190,12 +1138,11 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-mix = pt.windows[0]
-vo = Application("VoiceOver")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 rows = mix.tables.byName("Track List").rows
 msg = ""
 selectCount = 0
@@ -1224,7 +1171,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>492470596.10591602</real>
+				<real>493061343.84798998</real>
 				<key>Name</key>
 				<string>Speak Track Selection State</string>
 				<key>Triggers</key>
@@ -1288,20 +1235,12 @@ vo.output (msg)
 						<string></string>
 						<key>Text</key>
 						<string>vo = Application("VoiceOver")
-
-
-app = Application.currentApplication()
-app.includeStandardAdditions = true
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
-msg = ""
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
+msg = ""
 soloCount = 0
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
@@ -1333,7 +1272,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>492470614.52573198</real>
+				<real>493059382.26938701</real>
 				<key>Name</key>
 				<string>speak track solo state</string>
 				<key>Triggers</key>
@@ -1398,17 +1337,11 @@ vo.output(msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
@@ -1434,7 +1367,7 @@ vo.output ("Unarmed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>492471777.03997099</real>
+				<real>493059446.74072301</real>
 				<key>Name</key>
 				<string>Unarm all tracks</string>
 				<key>Triggers</key>
@@ -1497,17 +1430,11 @@ vo.output ("Unarmed all tracks.")
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
@@ -1533,7 +1460,7 @@ vo.output("unmuted all tracks.")</string>
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>492472197.30937701</real>
+				<real>493059489.98862398</real>
 				<key>Name</key>
 				<string>Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -1596,12 +1523,11 @@ vo.output("unmuted all tracks.")</string>
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-mix = pt.windows[0]
-vo = Application("VoiceOver")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 rows = mix.tables.byName("Track List").rows
 for (i=0; i&lt;rows.length; i++) {
 button = rows[i].uiElements.at(1).buttons[0]
@@ -1625,7 +1551,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>484085123.07696998</real>
 				<key>ModificationDate</key>
-				<real>492643667.02210301</real>
+				<real>493059530.54063499</real>
 				<key>Name</key>
 				<string>unselect all tracks</string>
 				<key>Triggers</key>
@@ -1688,17 +1614,11 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>app = Application.currentApplication()
-app.includeStandardAdditions = true
+						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-vo = Application("VoiceOver")
-windows = pt.windows()
-for (i=0; i&lt;windows.length; i++) {
-if (windows[i].name().indexOf("Mix")&gt;-1) mix = windows[i]
-else
-if (windows[i].name().indexOf("Edit")&gt;-1) edit = windows[i]
-}
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
@@ -1722,7 +1642,7 @@ vo.output("unsoloed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>492472090.67391098</real>
+				<real>493059610.27603197</real>
 				<key>Name</key>
 				<string>unsolo all tracks</string>
 				<key>Triggers</key>
