@@ -198,7 +198,7 @@ vo.output ("Deselected All Tracks.")
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>None</string>
+						<string>Window</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -215,7 +215,7 @@ tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
 name = track.name()
-if (name.indexOf("Group List")&gt;-1|name.indexOf("master")&gt;-1|name.indexOf("aux")&gt;-1|name.indexOf("Aux")&gt;-1) continue
+if (name.startsWith("Group List")|name.endsWith("Master Track")|name.endsWith("Aux Track")) continue
 arm = track.buttons.byName("Track Record Enable")
 if (arm.value().indexOf("armed")&gt;-1) {
 arm.click()
@@ -236,7 +236,7 @@ vo.output ("Disarmed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493686060.42840803</real>
+				<real>493752337.41872603</real>
 				<key>Name</key>
 				<string>Disarm all tracks</string>
 				<key>Triggers</key>
@@ -2062,7 +2062,7 @@ vo.output(msg)
 				<array>
 					<dict>
 						<key>DisplayKind</key>
-						<string>None</string>
+						<string>Window</string>
 						<key>IncludeStdErr</key>
 						<true/>
 						<key>MacroActionType</key>
@@ -2079,7 +2079,7 @@ tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
 name = track.name()
-if (name.indexOf("Group List")&gt;-1) continue
+if (name.startsWith("Group List")|name.endsWith("Master Track")) continue
 mute = track.buttons.byName("Mute")
 if (mute.value().indexOf("solo")&gt;-1) continue
 if (mute.value().indexOf("on")&gt;-1) {
@@ -2100,7 +2100,7 @@ vo.output("unmuted all tracks.")</string>
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493059489.98862398</real>
+				<real>493753033.79471302</real>
 				<key>Name</key>
 				<string>Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -2172,7 +2172,7 @@ tracks = mix.groups
 for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
 name = track.name()
-if (name.indexOf("Group List")&gt;-1) continue
+if (name.startsWith("Group List")|name.endsWith("Master Track")) continue
 solo = track.buttons.byName("Solo")
 if (solo.value().indexOf("Selected")&gt;-1) solo.click()
 }
@@ -2191,7 +2191,7 @@ vo.output("unsoloed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493059610.27603197</real>
+				<real>493753116.03711498</real>
 				<key>Name</key>
 				<string>unsolo all tracks</string>
 				<key>Triggers</key>
