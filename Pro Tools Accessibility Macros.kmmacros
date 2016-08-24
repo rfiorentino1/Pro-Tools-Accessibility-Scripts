@@ -1568,16 +1568,14 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-rows = mix.tables.byName("Track List").rows
+select = ObjectSpecifier().uiElements[1].buttons[0].name
+tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]})
 msg = ""
-selectCount = 0
-for (i=0; i&lt;rows.length; i++) {
-name = rows[i].uiElements.at(1).buttons[0].name()
-if (name.indexOf("Selected")&gt;-1) {
+selectCount = tracks.length
+for (t in tracks) {
+name = tracks[t].uiElements.at(1).buttons[0].name()
 name = name.replace("Selected", "").replace("track", "")
 msg = msg+name+"."
-selectCount = selectCount+1
-}
 }
 if (selectCount == 0)
 msg = "No tracks are currently selected."
@@ -1596,7 +1594,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>493707224.33056903</real>
+				<real>493741968.01428002</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks</string>
 				<key>Triggers</key>
