@@ -927,7 +927,7 @@ vo.output("Option shift Click at "+x+", "+y)</string>
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>479078801.99380499</real>
+		<real>493839659.76668698</real>
 		<key>Macros</key>
 		<array>
 			<dict>
@@ -966,7 +966,7 @@ button.click()</string>
 				<key>CreationDate</key>
 				<real>493739047.38486099</real>
 				<key>ModificationDate</key>
-				<real>493739223.947658</real>
+				<real>493859091.76727498</real>
 				<key>Name</key>
 				<string>Reset Meter</string>
 				<key>Triggers</key>
@@ -975,11 +975,11 @@ button.click()</string>
 						<key>FireType</key>
 						<string>Tapped</string>
 						<key>KeyCode</key>
-						<integer>46</integer>
+						<integer>37</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4352</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -989,7 +989,7 @@ button.click()</string>
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Pro Tools Accessibility</string>
+		<string>Pro Tools Accessibility Inspector</string>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -1007,15 +1007,15 @@ button.click()</string>
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
 		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>479078801.99380499</real>
+		<real>493839659.76668698</real>
 		<key>Macros</key>
 		<array>
 			<dict>
@@ -1053,7 +1053,7 @@ slider.click()</string>
 				<key>CreationDate</key>
 				<real>492698480.42757702</real>
 				<key>ModificationDate</key>
-				<real>493738177.59456801</real>
+				<real>493859073.52644199</real>
 				<key>Name</key>
 				<string>Reset Peak Meter</string>
 				<key>Triggers</key>
@@ -1066,7 +1066,7 @@ slider.click()</string>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4608</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1076,7 +1076,7 @@ slider.click()</string>
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Pro Tools Accessibility</string>
+		<string>Pro Tools Accessibility Inspector</string>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -1094,9 +1094,9 @@ slider.click()</string>
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
 		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
@@ -2368,7 +2368,7 @@ vo.output (msg)
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>479078801.99380499</real>
+		<real>493839659.76668698</real>
 		<key>Macros</key>
 		<array>
 			<dict>
@@ -2410,7 +2410,7 @@ else vo.output (meter)
 				<key>CreationDate</key>
 				<real>493737525.30852699</real>
 				<key>ModificationDate</key>
-				<real>493779854.436674</real>
+				<real>493859144.659868</real>
 				<key>Name</key>
 				<string>Speak Meter</string>
 				<key>Triggers</key>
@@ -2419,11 +2419,11 @@ else vo.output (meter)
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>46</integer>
+						<integer>37</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4352</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2431,7 +2431,7 @@ else vo.output (meter)
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Pro Tools Accessibility</string>
+		<string>Pro Tools Accessibility Inspector</string>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -2449,9 +2449,9 @@ else vo.output (meter)
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
 		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
@@ -2813,7 +2813,7 @@ vo.output(value)
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>479078801.99380499</real>
+		<real>493839659.76668698</real>
 		<key>Macros</key>
 		<array>
 			<dict>
@@ -2853,7 +2853,7 @@ vo.output (meter)
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>493831908.12993902</real>
+				<real>493859189.70700902</real>
 				<key>Name</key>
 				<string>Speak Peak Meter</string>
 				<key>Triggers</key>
@@ -2866,7 +2866,7 @@ vo.output (meter)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4608</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2874,7 +2874,7 @@ vo.output (meter)
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Pro Tools Accessibility</string>
+		<string>Pro Tools Accessibility Inspector</string>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -2892,9 +2892,9 @@ vo.output (meter)
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
 		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
