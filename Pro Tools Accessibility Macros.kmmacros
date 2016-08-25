@@ -483,11 +483,8 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>kmv = Library("KMV")
+						<string>kme = Application("Keyboard Maestro Engine")
 vo = Application("VoiceOver")
-vo.output("Option Click")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
 bounds = vo.voCursor.bounds()
 x = bounds["x"]
 y = bounds["y"]
@@ -495,9 +492,9 @@ width = bounds["width"]
 height = bounds["height"]
 x = x+width/2
 y = y+height/2
-kmv.setKMV("x", x)
-kmv.setKMV("y", y)
-</string>
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+vo.output("Option Click at "+x+", "+y)</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -543,7 +540,7 @@ kmv.setKMV("y", y)
 				<key>CreationDate</key>
 				<real>482163083.14183003</real>
 				<key>ModificationDate</key>
-				<real>493706723.27751398</real>
+				<real>493828314.061351</real>
 				<key>Name</key>
 				<string>option click</string>
 				<key>Triggers</key>
@@ -606,11 +603,8 @@ kmv.setKMV("y", y)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>kmv = Library("KMV")
+						<string>kme = Application("Keyboard Maestro Engine")
 vo = Application("VoiceOver")
-vo.output("Option Shift Click")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
 bounds = vo.voCursor.bounds()
 x = bounds["x"]
 y = bounds["y"]
@@ -618,9 +612,9 @@ width = bounds["width"]
 height = bounds["height"]
 x = x+width/2
 y = y+height/2
-kmv.setKMV("x", x)
-kmv.setKMV("y", y)
-</string>
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+vo.output("Option shift Click at "+x+", "+y)</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -666,7 +660,7 @@ kmv.setKMV("y", y)
 				<key>CreationDate</key>
 				<real>482286422.39457399</real>
 				<key>ModificationDate</key>
-				<real>493706833.39425701</real>
+				<real>493828366.90744603</real>
 				<key>Name</key>
 				<string>Option Shift Click</string>
 				<key>Triggers</key>
