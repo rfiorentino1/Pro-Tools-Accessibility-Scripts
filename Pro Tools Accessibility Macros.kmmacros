@@ -200,18 +200,16 @@ vo.output(value)
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows()
-closed = 0
 msg = ""
-for (i=0; i&lt;windows.length; i++) {
-window = windows[i];
-name = windows[i].name()
-if (name.indexOf("Mix")==-1 &amp; name.indexOf("Edit")==-1) {
-msg = msg+"closing "+name+". "
-closed = closed+1
+for (w in windows) {
+window = windows[w]
+name = window.name()
+if (name.indexOf("Mix: ")==0 | name.indexOf("Edit: ")==0) continue
+msg += name+", "
  window.buttons[0].click()
 }
-}
-if (closed==0) msg = msg+"No windows to cloz."
+if (msg=="") msg = "No windows to cloz."
+else msg = "Closed "+msg
 vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -227,7 +225,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>493706643.50733298</real>
+				<real>493937961.52389598</real>
 				<key>Name</key>
 				<string>Close All Floating Windows</string>
 				<key>Triggers</key>
@@ -473,15 +471,13 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
-for (t=0; t&lt;tracks.length; t++) {
-track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - Master Track")&gt;-1|name.indexOf(" - Aux Track")&gt;-1) continue
-arm = track.buttons.byName("Track Record Enable")
-if (arm.value().indexOf("armed")&gt;-1) {
-arm.click()
-}
+groupFilter = {name:{_beginsWith:"Group List"}}
+masterFilter = {name:{_endsWith:" - Master Track"}}
+auxFilter = {name:{_endsWith:" - Aux Track"}}
+tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter]})
+for (t in tracks) {
+arm = tracks[t].buttons["Track Record Enable"]
+if (arm.value().indexOf("armed")&gt;-1) arm.click()
 }
 vo.output ("Disarmed all tracks.")
 </string>
@@ -498,7 +494,7 @@ vo.output ("Disarmed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493778764.31552202</real>
+				<real>493937264.889723</real>
 				<key>Name</key>
 				<string>Disarm all tracks</string>
 				<key>Triggers</key>
@@ -1875,22 +1871,19 @@ vo.output (msg)
 						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-msg = ""
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
-armCount = 0
+groupFilter = {name:{_beginsWith:"Group List"}}
+masterFilter = {name:{_endsWith:" - Master Track"}}
+auxFilter = {name:{_endsWith:" - Aux Track"}}
+armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
+armFilter = {_match:[armSpecifier,""]}
+tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter]})
+msg = ""
 for (t in tracks) {
-track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - Master Track")&gt;-1|name.indexOf(" - Aux Track")&gt;-1) continue
-arm = track.buttons.byName("Track Record Enable")
-if (arm.value().indexOf("armed")&gt;-1) {
-msg = msg+name
-armCount = armCount+1
+msg += tracks[t].name()+", "
 }
-}
-if (armCount==0) msg = msg+"No tracks are armed."
+if (msg=="") msg = msg+"No tracks are armed."
 else msg = "Armed: "+msg
 vo.output (msg)
 </string>
@@ -1907,7 +1900,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493778675.70721602</real>
+				<real>493934917.80010098</real>
 				<key>Name</key>
 				<string>Speak Armed Tracks</string>
 				<key>Triggers</key>
@@ -1975,20 +1968,18 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
+groupFilter = {name:{_beginsWith:"Group List"}}
+midiFilter = {name:{_endsWith:" - MIDI Track"}}
+tracks = mix.groups.whose({_not:[groupFilter, midiFilter]})
 msg = ""
 for (t in tracks) {
 track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - MIDI Track")&gt;-1) continue
-slider = tracks[t].sliders.byName("Peak")
-meter = slider.attributes[2].value()
+meter = tracks[t].sliders["Peak"].attributes[2].value()
 meter = meter.replace("minus ","-")
-if (meter&gt;=0) {
-msg += name+". "
+if (meter&gt;=0) msg += track.name()+", "
 }
-}
-if (msg == "") msg = "No tracks are clipped"
+if (msg=="") msg = "No tracks are clipped"
+else msg = "Clipped: "+msg
 vo.output(msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
@@ -2004,7 +1995,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493820126.83139598</real>
 				<key>ModificationDate</key>
-				<real>493821372.72595799</real>
+				<real>493936930.05895901</real>
 				<key>Name</key>
 				<string>Speak Clipped Tracks</string>
 				<key>Triggers</key>
@@ -2709,22 +2700,20 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
-muteCount = 0
+groupFilter = {name:{_beginsWith:"Group List"}}
+masterFilter = {name:{_endsWith:" - Master Track"}}
+muteSpecifier = ObjectSpecifier().buttons["Mute"].value
+muteFilter = {_match:[muteSpecifier,""]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter]})
 msg = ""
 for (t in tracks) {
 track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - Master Track")&gt;-1) continue
-mute = track.buttons.byName("Mute")
-if (mute.value().indexOf("solo")&gt;-1) continue
-if (mute.value().indexOf("on")&gt;-1) {
-msg = msg+name
-muteCount = muteCount+1
+if (track.buttons["Mute"].value().indexOf("solo")&gt;-1) continue
+msg += track.name()+", "
 }
-}
-if (muteCount==0) msg = msg+"No tracks are muted."
-vo.output ("Muted: "+msg)
+if (msg=="") msg = "No tracks are muted."
+else msg = "Muted: "+msg
+vo.output(msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
@@ -2739,7 +2728,7 @@ vo.output ("Muted: "+msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493778375.09340602</real>
+				<real>493936591.94234401</real>
 				<key>Name</key>
 				<string>Speak Muted Tracks</string>
 				<key>Triggers</key>
@@ -3247,14 +3236,12 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 select = ObjectSpecifier().uiElements[1].buttons[0].name
 tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]})
 msg = ""
-selectCount = tracks.length
 for (t in tracks) {
 name = tracks[t].uiElements.at(1).buttons[0].name()
-name = name.replace("Selected", "").replace("track", "")
-msg = msg+name+"."
+name = name.replace("Selected", "")
+msg += name+", "
 }
-if (selectCount == 0)
-msg = "No tracks are currently selected."
+if (msg=="") msg = "No tracks are currently selected."
 else msg = "Selected: "+msg
 vo.output (msg)
 </string>
@@ -3271,7 +3258,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>493779980.31606501</real>
+				<real>493935302.98894298</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks</string>
 				<key>Triggers</key>
@@ -3923,24 +3910,19 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
+groupFilter = {name:{_beginsWith:"Group List"}}
+masterFilter = {name:{_endsWith:" - Master Track"}}
+soloSpecifier = ObjectSpecifier().buttons["Solo"].value
+soloFilter = {_match:[soloSpecifier,""]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter]})
 msg = ""
-soloCount = 0
 for (t in tracks) {
 track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - Master Track")&gt;-1) continue
-solo = track.buttons.byName("solo")
-if (solo.value().indexOf("Selected")&gt;-1) {
-msg = msg+name+", "
-soloCount = soloCount+1
+if (track.buttons["solo"].value().indexOf("safe")&gt;-1) {
+msg += track.name()+", safe soloed, "
+} else msg += track.name()+", "
 }
-if (solo.value().indexOf("safe")&gt;-1) {
-soloCount = soloCount+1
-msg = msg+name+", safe soloed. "
-}
-}
-if (soloCount==0) msg = msg+"No tracks are soloed."
+if (msg=="") msg = msg+"No tracks are soloed."
 else msg = "Soloed: "+msg
 vo.output(msg)
 </string>
@@ -3957,7 +3939,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493833791.36634398</real>
+				<real>493936445.96956402</real>
 				<key>Name</key>
 				<string>Speak Soloed Tracks</string>
 				<key>Triggers</key>
@@ -4027,15 +4009,13 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-input = ObjectSpecifier().buttons["TrackInput Monitor"].value
-nameMatch = {name:{_contains:"Audio Track"}}
-inputMatch = {_match:[input,"on"]}
-tracks = mix.groups.whose({_and:[nameMatch,inputMatch]})
+inputSpecifier = ObjectSpecifier().buttons["TrackInput Monitor"].value
+inputFilter = {_match:[inputSpecifier, "on"]}
+audioFilter = {name:{_contains:" - Audio Track"}}
+tracks = mix.groups.whose({_and:[audioFilter, inputFilter]})
 msg = ""
 for (t in tracks) {
-track = tracks[t]
-name = track.name()
-msg += name+". "
+msg += tracks[t].name()+", "
 }
 if (msg == "") msg = "No track has input monitor on"
 else msg = "Input on: "+msg
@@ -4054,7 +4034,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493846509.576334</real>
 				<key>ModificationDate</key>
-				<real>493848028.59581202</real>
+				<real>493935766.96149898</real>
 				<key>Name</key>
 				<string>Speak Tracks With Input Monitor On</string>
 				<key>Triggers</key>
@@ -4573,8 +4553,7 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups.whose({name:{_contains:"Audio Track"}})
 msg = ""
 for (t in tracks) {
-track = tracks[t]
-button = track.buttons["TrackInput Monitor"]
+button = tracks[t].buttons["TrackInput Monitor"]
 if (button.value() == "on") button.click()
 }
 msg = "Turned Off Input Monitor for all tracks"
@@ -4593,7 +4572,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493848034.58134598</real>
 				<key>ModificationDate</key>
-				<real>493848545.01144201</real>
+				<real>493936284.35202903</real>
 				<key>Name</key>
 				<string>Turn Off Input Monitor For All Tracks</string>
 				<key>Triggers</key>
@@ -4663,16 +4642,13 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
+groupFilter = {name:{_beginsWith:"Group List"}}
+masterFilter = {name:{_endsWith:" - Master Track"}}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter]})
 for (t=0; t&lt;tracks.length; t++) {
-track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - Master Track")&gt;-1) continue
-mute = track.buttons.byName("Mute")
+mute = tracks[t].buttons["Mute"]
 if (mute.value().indexOf("solo")&gt;-1) continue
-if (mute.value().indexOf("on")&gt;-1) {
-mute.click()
-}
+else if (mute.value().indexOf("on")&gt;-1) mute.click()
 }
 vo.output("unmuted all tracks.")</string>
 						<key>TimeOutAbortsMacro</key>
@@ -4688,7 +4664,7 @@ vo.output("unmuted all tracks.")</string>
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493778821.40957898</real>
+				<real>493936231.69909298</real>
 				<key>Name</key>
 				<string>Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -4756,12 +4732,11 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups
+groupFilter = {name:{_beginsWith:"Group List"}}
+masterFilter = {name:{_endsWith:" - Master Track"}}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter]})
 for (t=0; t&lt;tracks.length; t++) {
-track = tracks[t]
-name = track.name()
-if (name.indexOf("Group List")==0 | name.indexOf(" - Master Track")&gt;-1) continue
-solo = track.buttons.byName("Solo")
+solo = tracks[t].buttons["Solo"]
 if (solo.value().indexOf("Selected")&gt;-1) solo.click()
 }
 vo.output("unsoloed all tracks.")
@@ -4779,7 +4754,7 @@ vo.output("unsoloed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493778860.36236799</real>
+				<real>493936195.56265402</real>
 				<key>Name</key>
 				<string>unsolo all tracks</string>
 				<key>Triggers</key>
