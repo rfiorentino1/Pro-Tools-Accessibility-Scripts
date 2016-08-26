@@ -383,10 +383,8 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
 for (t in tracks) {
-button = tracks[t].uiElements.at(1).buttons[0]
-if (button.name().indexOf("Selected")&gt;-1) {
-button.click()
-}
+button = tracks[t].uiElements[1].buttons[0]
+if (button.name().indexOf("Selected")&gt;-1) button.click()
 }
 vo.output ("Deselected All Tracks.")
 </string>
@@ -403,7 +401,7 @@ vo.output ("Deselected All Tracks.")
 				<key>CreationDate</key>
 				<real>484085123.07696998</real>
 				<key>ModificationDate</key>
-				<real>493778988.01187497</real>
+				<real>493953629.13461602</real>
 				<key>Name</key>
 				<string>Deselect all tracks</string>
 				<key>Triggers</key>
@@ -564,10 +562,8 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
 for (t in tracks) {
-button = tracks[t].uiElements.at(0).buttons[0]
-if (button.name().indexOf("Shown")==0) {
-button.click()
-}
+button = tracks[t].uiElements[0].buttons[0]
+if (button.name().indexOf("Shown")==0) button.click()
 }
 msg = "Hide all tracks."
 vo.output (msg)
@@ -585,7 +581,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493686520.776407</real>
 				<key>ModificationDate</key>
-				<real>493779069.39939201</real>
+				<real>493954623.952676</real>
 				<key>Name</key>
 				<string>Hide All Tracks</string>
 				<key>Triggers</key>
@@ -655,10 +651,8 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
 for (t in tracks) {
-button = tracks[t].uiElements.at(0).buttons[0]
-show = tracks[t].uiElements.at(0).buttons[0].name()
-selected = tracks[t].uiElements.at(1).buttons[0].name()
-if (selected.indexOf("Selected")==0 &amp; show.indexOf("Shown")==0) {
+button = tracks[t].uiElements[0].buttons[0]
+if (tracks[t].uiElements[1].buttons[0].name().indexOf("Selected")==0 &amp; button.name().indexOf("Shown")==0) {
 button.click()
 }
 }
@@ -678,7 +672,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493687207.84850001</real>
 				<key>ModificationDate</key>
-				<real>493779218.53909701</real>
+				<real>493954908.802876</real>
 				<key>Name</key>
 				<string>Hide Selected Tracks</string>
 				<key>Triggers</key>
@@ -1687,12 +1681,10 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-rows = mix.tables.byName("Track List").rows
-for (i=0; i&lt;rows.length; i++) {
-button = rows[i].uiElements.at(0).buttons[0]
-if (button.name().indexOf("Hidden")==0) {
-button.click()
-}
+tracks = mix.tables.byName("Track List").rows
+for (t in tracks) {
+button = tracks[t].uiElements[0].buttons[0]
+if (button.name().indexOf("Hidden")==0) button.click()
 }
 msg = "Show all tracks."
 vo.output (msg)
@@ -1710,7 +1702,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493686641.678491</real>
 				<key>ModificationDate</key>
-				<real>493779435.14480299</real>
+				<real>493953723.39882201</real>
 				<key>Name</key>
 				<string>Show All Tracks</string>
 				<key>Triggers</key>
@@ -1780,9 +1772,9 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
 for (t in tracks) {
-button = tracks[t].uiElements.at(0).buttons[0]
-show = tracks[t].uiElements.at(0).buttons[0].name()
-selected = tracks[t].uiElements.at(1).buttons[0].name()
+button = tracks[t].uiElements[0].buttons[0]
+show = button.name()
+selected = tracks[t].uiElements[1].buttons[0].name()
 if (selected.indexOf("Selected")==0 &amp; show.indexOf("Hidden")==0) {
 button.click()
 } else if (!selected.indexOf("Selected")==0 &amp; show.indexOf("Shown")==0) {
@@ -1805,7 +1797,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493687545.99967802</real>
 				<key>ModificationDate</key>
-				<real>493779695.70847303</real>
+				<real>493954563.88972801</real>
 				<key>Name</key>
 				<string>Show Only Selected Tracks</string>
 				<key>Triggers</key>
@@ -4645,7 +4637,7 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
 tracks = mix.groups.whose({_not:[groupFilter, masterFilter]})
-for (t=0; t&lt;tracks.length; t++) {
+for (t in tracks) {
 mute = tracks[t].buttons["Mute"]
 if (mute.value().indexOf("solo")&gt;-1) continue
 else if (mute.value().indexOf("on")&gt;-1) mute.click()
@@ -4664,7 +4656,7 @@ vo.output("unmuted all tracks.")</string>
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493936231.69909298</real>
+				<real>493953473.86156601</real>
 				<key>Name</key>
 				<string>Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -4735,7 +4727,7 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
 tracks = mix.groups.whose({_not:[groupFilter, masterFilter]})
-for (t=0; t&lt;tracks.length; t++) {
+for (t in tracks) {
 solo = tracks[t].buttons["Solo"]
 if (solo.value().indexOf("Selected")&gt;-1) solo.click()
 }
@@ -4754,7 +4746,7 @@ vo.output("unsoloed all tracks.")
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>493936195.56265402</real>
+				<real>493953437.07975698</real>
 				<key>Name</key>
 				<string>unsolo all tracks</string>
 				<key>Triggers</key>
