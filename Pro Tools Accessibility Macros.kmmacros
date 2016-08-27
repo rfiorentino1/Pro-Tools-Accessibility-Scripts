@@ -47,26 +47,26 @@ vo.output("Inspector On")</string>
 				<key>CreationDate</key>
 				<real>493844446.23777997</real>
 				<key>ModificationDate</key>
-				<real>494003599.58819699</real>
+				<real>494033018.64376599</real>
 				<key>Name</key>
 				<string>Activate INspector</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>ElementCookie</key>
-						<integer>76</integer>
+						<integer>6</integer>
 						<key>ElementDeviceUsage</key>
 						<integer>6</integer>
 						<key>ElementDeviceUsagePage</key>
 						<integer>1</integer>
 						<key>ElementName</key>
-						<string>Magic Keyboard Caps Lock</string>
+						<string>Magic Keyboard Left Option</string>
 						<key>ElementProductID</key>
 						<integer>615</integer>
 						<key>ElementShortName</key>
-						<string>#57</string>
+						<string>L⌥</string>
 						<key>ElementUsage</key>
-						<integer>57</integer>
+						<integer>226</integer>
 						<key>ElementUsagePage</key>
 						<integer>7</integer>
 						<key>ElementValue</key>
@@ -153,7 +153,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493843837.55308402</real>
 				<key>ModificationDate</key>
-				<real>493844310.13595903</real>
+				<real>494032764.35582101</real>
 				<key>Name</key>
 				<string>Broken Speak Automation Mode</string>
 				<key>Triggers</key>
@@ -166,7 +166,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -333,26 +333,26 @@ vo.output("Inspector Off")</string>
 				<key>CreationDate</key>
 				<real>493858646.54649901</real>
 				<key>ModificationDate</key>
-				<real>494003612.48869598</real>
+				<real>494033026.62436301</real>
 				<key>Name</key>
 				<string>Deactivate INspector</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>ElementCookie</key>
-						<integer>76</integer>
+						<integer>6</integer>
 						<key>ElementDeviceUsage</key>
 						<integer>6</integer>
 						<key>ElementDeviceUsagePage</key>
 						<integer>1</integer>
 						<key>ElementName</key>
-						<string>Magic Keyboard Caps Lock</string>
+						<string>Magic Keyboard Left Option</string>
 						<key>ElementProductID</key>
 						<integer>615</integer>
 						<key>ElementShortName</key>
-						<string>#57</string>
+						<string>L⌥</string>
 						<key>ElementUsage</key>
-						<integer>57</integer>
+						<integer>226</integer>
 						<key>ElementUsagePage</key>
 						<integer>7</integer>
 						<key>ElementValue</key>
@@ -1038,20 +1038,22 @@ button.click()</string>
 				<key>CreationDate</key>
 				<real>493739047.38486099</real>
 				<key>ModificationDate</key>
-				<real>494004170.200845</real>
+				<real>494032920.23800498</real>
 				<key>Name</key>
 				<string>Reset Meter</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>37</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1131,20 +1133,22 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493863331.97943401</real>
 				<key>ModificationDate</key>
-				<real>494004160.85477</real>
+				<real>494032933.01897103</real>
 				<key>Name</key>
 				<string>Reset Pan</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>45</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1216,20 +1220,22 @@ slider.click()</string>
 				<key>CreationDate</key>
 				<real>492698480.42757702</real>
 				<key>ModificationDate</key>
-				<real>494004142.568878</real>
+				<real>494032946.729994</real>
 				<key>Name</key>
 				<string>Reset Peak Meter</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>35</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1299,20 +1305,22 @@ track.sliders.byName("Volume").click()</string>
 				<key>CreationDate</key>
 				<real>493842382.64579898</real>
 				<key>ModificationDate</key>
-				<real>494004130.41815603</real>
+				<real>494032961.580437</real>
 				<key>Name</key>
 				<string>Reset Volume</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>9</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1383,20 +1391,22 @@ track.popUpButtons.whose({name:{_contains:"Automation Mode selector"}})[0].click
 				<key>CreationDate</key>
 				<real>493843750.53325099</real>
 				<key>ModificationDate</key>
-				<real>494004186.85152602</real>
+				<real>494032973.58184898</real>
 				<key>Name</key>
 				<string>Select Automation Mode</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>0</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1467,20 +1477,22 @@ track.popUpButtons.whose({name:{_contains:"Input Path"}})[0].click()
 				<key>CreationDate</key>
 				<real>493843510.23656499</real>
 				<key>ModificationDate</key>
-				<real>494004105.90741098</real>
+				<real>494032987.99689901</real>
 				<key>Name</key>
 				<string>Select Input</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>34</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4608</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1551,20 +1563,22 @@ track.popUpButtons.whose({name:{_contains:"Output Path"}})[0].click()
 				<key>CreationDate</key>
 				<real>493843665.254058</real>
 				<key>ModificationDate</key>
-				<real>494004079.74647403</real>
+				<real>494032625.53377903</real>
 				<key>Name</key>
 				<string>Select Output</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>31</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4608</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1637,20 +1651,22 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493864025.19321001</real>
 				<key>ModificationDate</key>
-				<real>494004035.97441602</real>
+				<real>494032611.088871</real>
 				<key>Name</key>
 				<string>Select Track Pop-Up Menu</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>14</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2097,7 +2113,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493842481.33545101</real>
 				<key>ModificationDate</key>
-				<real>493860159.35426199</real>
+				<real>494032577.266563</real>
 				<key>Name</key>
 				<string>Speak Input</string>
 				<key>Triggers</key>
@@ -2110,7 +2126,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4096</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2183,7 +2199,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493845378.97029901</real>
 				<key>ModificationDate</key>
-				<real>493860150.41354799</real>
+				<real>494033546.44926101</real>
 				<key>Name</key>
 				<string>Speak Input Monitor</string>
 				<key>Triggers</key>
@@ -2196,7 +2212,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2560</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2277,7 +2293,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493856661.99573898</real>
 				<key>ModificationDate</key>
-				<real>493857660.66873902</real>
+				<real>494032532.56386602</real>
 				<key>Name</key>
 				<string>Speak Inserts A-E</string>
 				<key>Triggers</key>
@@ -2290,7 +2306,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2371,7 +2387,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493857077.87562102</real>
 				<key>ModificationDate</key>
-				<real>493857712.04583597</real>
+				<real>494032521.62879997</real>
 				<key>Name</key>
 				<string>Speak Inserts F-J</string>
 				<key>Triggers</key>
@@ -2384,7 +2400,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2562,7 +2578,7 @@ else vo.output (meter)
 				<key>CreationDate</key>
 				<real>493737525.30852699</real>
 				<key>ModificationDate</key>
-				<real>493859144.659868</real>
+				<real>494032511.78833902</real>
 				<key>Name</key>
 				<string>Speak Meter</string>
 				<key>Triggers</key>
@@ -2575,7 +2591,7 @@ else vo.output (meter)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2648,7 +2664,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493840117.65412098</real>
 				<key>ModificationDate</key>
-				<real>493841552.63497502</real>
+				<real>494032499.50218898</real>
 				<key>Name</key>
 				<string>Speak Mute</string>
 				<key>Triggers</key>
@@ -2661,7 +2677,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2831,7 +2847,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493851817.94585598</real>
 				<key>ModificationDate</key>
-				<real>493864138.34429902</real>
+				<real>494032484.50161898</real>
 				<key>Name</key>
 				<string>Speak Name</string>
 				<key>Triggers</key>
@@ -2844,7 +2860,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2917,7 +2933,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493843431.58760601</real>
 				<key>ModificationDate</key>
-				<real>493860206.15669399</real>
+				<real>494032472.92086101</real>
 				<key>Name</key>
 				<string>Speak Output</string>
 				<key>Triggers</key>
@@ -2930,7 +2946,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4096</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3008,7 +3024,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493862830.77492797</real>
 				<key>ModificationDate</key>
-				<real>493864173.45962799</real>
+				<real>494032458.32574803</real>
 				<key>Name</key>
 				<string>Speak Pan</string>
 				<key>Triggers</key>
@@ -3021,7 +3037,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3095,7 +3111,7 @@ vo.output (meter)
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>493859189.70700902</real>
+				<real>494032442.93443501</real>
 				<key>Name</key>
 				<string>Speak Peak Meter</string>
 				<key>Triggers</key>
@@ -3108,7 +3124,7 @@ vo.output (meter)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3181,7 +3197,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493841116.67356998</real>
 				<key>ModificationDate</key>
-				<real>493841512.61263102</real>
+				<real>494032433.37928301</real>
 				<key>Name</key>
 				<string>Speak Record</string>
 				<key>Triggers</key>
@@ -3194,7 +3210,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3678,7 +3694,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493857184.87559599</real>
 				<key>ModificationDate</key>
-				<real>493857739.123088</real>
+				<real>494032414.23839802</real>
 				<key>Name</key>
 				<string>Speak Sends A-E</string>
 				<key>Triggers</key>
@@ -3691,7 +3707,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3772,7 +3788,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493857413.65157801</real>
 				<key>ModificationDate</key>
-				<real>493857758.84907502</real>
+				<real>494032401.96744299</real>
 				<key>Name</key>
 				<string>Speak Sends F-J</string>
 				<key>Triggers</key>
@@ -3785,7 +3801,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3858,7 +3874,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493840542.54986101</real>
 				<key>ModificationDate</key>
-				<real>493841561.004439</real>
+				<real>494032390.52227402</real>
 				<key>Name</key>
 				<string>Speak Solo</string>
 				<key>Triggers</key>
@@ -3871,7 +3887,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4138,7 +4154,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493841616.18311203</real>
 				<key>ModificationDate</key>
-				<real>493842142.48505801</real>
+				<real>494032369.3563</real>
 				<key>Name</key>
 				<string>Speak Volume</string>
 				<key>Triggers</key>
@@ -4151,7 +4167,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4226,20 +4242,22 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493845266.359146</real>
 				<key>ModificationDate</key>
-				<real>494003971.05158597</real>
+				<real>494033465.23021799</real>
 				<key>Name</key>
 				<string>Toggle Input Monitor</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>34</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2560</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4314,20 +4332,22 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493840383.85708898</real>
 				<key>ModificationDate</key>
-				<real>494004003.15218598</real>
+				<real>494032235.48479199</real>
 				<key>Name</key>
 				<string>Toggle Mute</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>46</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4402,20 +4422,22 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493841347.92451298</real>
 				<key>ModificationDate</key>
-				<real>494003990.04154998</real>
+				<real>494032176.951464</real>
 				<key>Name</key>
 				<string>Toggle Record</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>15</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4490,20 +4512,22 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493840505.88860101</real>
 				<key>ModificationDate</key>
-				<real>494003732.138861</real>
+				<real>494032154.99136299</real>
 				<key>Name</key>
 				<string>Toggle Solo</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
-						<string>Pressed</string>
+						<string>Tapped</string>
 						<key>KeyCode</key>
 						<integer>1</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>2048</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
 					</dict>
 				</array>
 				<key>UID</key>
