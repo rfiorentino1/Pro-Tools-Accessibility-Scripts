@@ -47,40 +47,20 @@ vo.output("Inspector On")</string>
 				<key>CreationDate</key>
 				<real>493844446.23777997</real>
 				<key>ModificationDate</key>
-				<real>494033018.64376599</real>
+				<real>494113119.85347497</real>
 				<key>Name</key>
 				<string>Activate INspector</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
-						<key>ElementCookie</key>
-						<integer>6</integer>
-						<key>ElementDeviceUsage</key>
-						<integer>6</integer>
-						<key>ElementDeviceUsagePage</key>
-						<integer>1</integer>
-						<key>ElementName</key>
-						<string>Magic Keyboard Left Option</string>
-						<key>ElementProductID</key>
-						<integer>615</integer>
-						<key>ElementShortName</key>
-						<string>L⌥</string>
-						<key>ElementUsage</key>
-						<integer>226</integer>
-						<key>ElementUsagePage</key>
-						<integer>7</integer>
-						<key>ElementValue</key>
-						<integer>1</integer>
-						<key>ElementVendorID</key>
-						<integer>76</integer>
 						<key>FireType</key>
 						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>44</integer>
 						<key>MacroTriggerType</key>
-						<string>HID</string>
+						<string>HotKey</string>
 						<key>Modifiers</key>
 						<integer>0</integer>
-						<key>UseModifiers</key>
-						<true/>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -153,7 +133,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493843837.55308402</real>
 				<key>ModificationDate</key>
-				<real>494032764.35582101</real>
+				<real>494113179.03123701</real>
 				<key>Name</key>
 				<string>Broken Speak Automation Mode</string>
 				<key>Triggers</key>
@@ -166,7 +146,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -333,40 +313,20 @@ vo.output("Inspector Off")</string>
 				<key>CreationDate</key>
 				<real>493858646.54649901</real>
 				<key>ModificationDate</key>
-				<real>494033026.62436301</real>
+				<real>494113138.21453601</real>
 				<key>Name</key>
 				<string>Deactivate INspector</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
-						<key>ElementCookie</key>
-						<integer>6</integer>
-						<key>ElementDeviceUsage</key>
-						<integer>6</integer>
-						<key>ElementDeviceUsagePage</key>
-						<integer>1</integer>
-						<key>ElementName</key>
-						<string>Magic Keyboard Left Option</string>
-						<key>ElementProductID</key>
-						<integer>615</integer>
-						<key>ElementShortName</key>
-						<string>L⌥</string>
-						<key>ElementUsage</key>
-						<integer>226</integer>
-						<key>ElementUsagePage</key>
-						<integer>7</integer>
-						<key>ElementValue</key>
-						<integer>1</integer>
-						<key>ElementVendorID</key>
-						<integer>76</integer>
 						<key>FireType</key>
-						<string>Released</string>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>44</integer>
 						<key>MacroTriggerType</key>
-						<string>HID</string>
+						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
-						<key>UseModifiers</key>
-						<false/>
+						<integer>512</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1022,6 +982,105 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 track = tracks.byName(vo.voCursor.textUnderCursor())
+gainReduction = track.buttons.byName("Gain Reduction").click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494114019.50827903</real>
+				<key>ModificationDate</key>
+				<real>494115334.05857497</real>
+				<key>Name</key>
+				<string>Reset Gain Reduction</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Tapped</string>
+						<key>KeyCode</key>
+						<integer>5</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+						<key>TapCount</key>
+						<integer>2</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>9F33BA2C-4760-421E-821A-E0C1E071979B</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+tracks = mix.groups
+track = tracks.byName(vo.voCursor.textUnderCursor())
 roleDescription = ObjectSpecifier().roleDescription
 button = track.buttons.whose({_match:[roleDescription,"Level Meter"]})[0]
 button.click()</string>
@@ -1034,11 +1093,23 @@ button.click()</string>
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493739047.38486099</real>
 				<key>ModificationDate</key>
-				<real>494032920.23800498</real>
+				<real>494115312.87718701</real>
 				<key>Name</key>
 				<string>Reset Meter</string>
 				<key>Triggers</key>
@@ -1051,7 +1122,7 @@ button.click()</string>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1113,12 +1184,9 @@ pans = track.sliders.whose({name:{_contains:"Pan Knob"}})
 msg = ""
 for (p in pans) {
 pans[p].click()
-delay(0.1)
 value = ""+pans[p].attributes["AXValueDescription"].value()
-if (value=="") value = "No Pan"
 msg += value+". "
 }
-vo.output(msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
@@ -1129,11 +1197,23 @@ vo.output(msg)
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493863331.97943401</real>
 				<key>ModificationDate</key>
-				<real>494032933.01897103</real>
+				<real>494115293.55624402</real>
 				<key>Name</key>
 				<string>Reset Pan</string>
 				<key>Triggers</key>
@@ -1146,7 +1226,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1216,11 +1296,23 @@ slider.click()</string>
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>492698480.42757702</real>
 				<key>ModificationDate</key>
-				<real>494032946.729994</real>
+				<real>494115272.01452601</real>
 				<key>Name</key>
 				<string>Reset Peak Meter</string>
 				<key>Triggers</key>
@@ -1233,7 +1325,7 @@ slider.click()</string>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1291,7 +1383,8 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 track = mix.groups.byName(vo.voCursor.textUnderCursor())
-track.sliders.byName("Volume").click()</string>
+track.sliders.byName("Volume").click()
+</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -1301,11 +1394,23 @@ track.sliders.byName("Volume").click()</string>
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493842382.64579898</real>
 				<key>ModificationDate</key>
-				<real>494032961.580437</real>
+				<real>494115242.67360699</real>
 				<key>Name</key>
 				<string>Reset Volume</string>
 				<key>Triggers</key>
@@ -1318,7 +1423,7 @@ track.sliders.byName("Volume").click()</string>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1391,7 +1496,7 @@ track.popUpButtons.whose({name:{_contains:"Automation Mode selector"}})[0].click
 				<key>CreationDate</key>
 				<real>493843750.53325099</real>
 				<key>ModificationDate</key>
-				<real>494032973.58184898</real>
+				<real>494113215.55845499</real>
 				<key>Name</key>
 				<string>Select Automation Mode</string>
 				<key>Triggers</key>
@@ -1404,7 +1509,7 @@ track.popUpButtons.whose({name:{_contains:"Automation Mode selector"}})[0].click
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1477,7 +1582,7 @@ track.popUpButtons.whose({name:{_contains:"Input Path"}})[0].click()
 				<key>CreationDate</key>
 				<real>493843510.23656499</real>
 				<key>ModificationDate</key>
-				<real>494032987.99689901</real>
+				<real>494113221.183254</real>
 				<key>Name</key>
 				<string>Select Input</string>
 				<key>Triggers</key>
@@ -1490,7 +1595,7 @@ track.popUpButtons.whose({name:{_contains:"Input Path"}})[0].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1563,7 +1668,7 @@ track.popUpButtons.whose({name:{_contains:"Output Path"}})[0].click()
 				<key>CreationDate</key>
 				<real>493843665.254058</real>
 				<key>ModificationDate</key>
-				<real>494032625.53377903</real>
+				<real>494113226.238464</real>
 				<key>Name</key>
 				<string>Select Output</string>
 				<key>Triggers</key>
@@ -1576,7 +1681,7 @@ track.popUpButtons.whose({name:{_contains:"Output Path"}})[0].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -1651,7 +1756,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493864025.19321001</real>
 				<key>ModificationDate</key>
-				<real>494032611.088871</real>
+				<real>494113231.563842</real>
 				<key>Name</key>
 				<string>Select Track Pop-Up Menu</string>
 				<key>Triggers</key>
@@ -1664,7 +1769,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -2095,6 +2200,92 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+tracks = mix.groups
+track = tracks.byName(vo.voCursor.textUnderCursor())
+gainReduction = ""+track.buttons["Gain Reduction"].value()
+vo.output (gainReduction)
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494113431.914226</real>
+				<key>ModificationDate</key>
+				<real>494115502.44539601</real>
+				<key>Name</key>
+				<string>Speak Gain Reduction</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>5</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>D6EBC0B1-C40A-4270-8944-21E7830E9B17</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 track = mix.groups.byName(vo.voCursor.textUnderCursor())
 value = ""+track.popUpButtons.whose({name:{_contains:"Input Path"}}).name()
 value = value.replace("Audio Input Path selector", "")
@@ -2113,7 +2304,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493842481.33545101</real>
 				<key>ModificationDate</key>
-				<real>494032577.266563</real>
+				<real>494113240.54948997</real>
 				<key>Name</key>
 				<string>Speak Input</string>
 				<key>Triggers</key>
@@ -2126,7 +2317,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2199,7 +2390,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493845378.97029901</real>
 				<key>ModificationDate</key>
-				<real>494033546.44926101</real>
+				<real>494113254.11021602</real>
 				<key>Name</key>
 				<string>Speak Input Monitor</string>
 				<key>Triggers</key>
@@ -2212,7 +2403,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2560</integer>
+						<integer>4096</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2293,7 +2484,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493856661.99573898</real>
 				<key>ModificationDate</key>
-				<real>494032532.56386602</real>
+				<real>494113260.17021102</real>
 				<key>Name</key>
 				<string>Speak Inserts A-E</string>
 				<key>Triggers</key>
@@ -2306,7 +2497,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2387,7 +2578,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493857077.87562102</real>
 				<key>ModificationDate</key>
-				<real>494032521.62879997</real>
+				<real>494113265.150702</real>
 				<key>Name</key>
 				<string>Speak Inserts F-J</string>
 				<key>Triggers</key>
@@ -2400,7 +2591,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2578,7 +2769,7 @@ else vo.output (meter)
 				<key>CreationDate</key>
 				<real>493737525.30852699</real>
 				<key>ModificationDate</key>
-				<real>494032511.78833902</real>
+				<real>494113269.81593198</real>
 				<key>Name</key>
 				<string>Speak Meter</string>
 				<key>Triggers</key>
@@ -2591,7 +2782,7 @@ else vo.output (meter)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2664,7 +2855,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493840117.65412098</real>
 				<key>ModificationDate</key>
-				<real>494032499.50218898</real>
+				<real>494113274.13579702</real>
 				<key>Name</key>
 				<string>Speak Mute</string>
 				<key>Triggers</key>
@@ -2677,7 +2868,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2847,7 +3038,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493851817.94585598</real>
 				<key>ModificationDate</key>
-				<real>494032484.50161898</real>
+				<real>494113279.05636001</real>
 				<key>Name</key>
 				<string>Speak Name</string>
 				<key>Triggers</key>
@@ -2860,7 +3051,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2933,7 +3124,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493843431.58760601</real>
 				<key>ModificationDate</key>
-				<real>494032472.92086101</real>
+				<real>494113283.97624803</real>
 				<key>Name</key>
 				<string>Speak Output</string>
 				<key>Triggers</key>
@@ -2946,7 +3137,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3024,7 +3215,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493862830.77492797</real>
 				<key>ModificationDate</key>
-				<real>494032458.32574803</real>
+				<real>494113289.84194797</real>
 				<key>Name</key>
 				<string>Speak Pan</string>
 				<key>Triggers</key>
@@ -3037,7 +3228,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3111,7 +3302,7 @@ vo.output (meter)
 				<key>CreationDate</key>
 				<real>481558018.85940599</real>
 				<key>ModificationDate</key>
-				<real>494032442.93443501</real>
+				<real>494113294.611821</real>
 				<key>Name</key>
 				<string>Speak Peak Meter</string>
 				<key>Triggers</key>
@@ -3124,7 +3315,7 @@ vo.output (meter)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3197,7 +3388,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493841116.67356998</real>
 				<key>ModificationDate</key>
-				<real>494032433.37928301</real>
+				<real>494113298.99239898</real>
 				<key>Name</key>
 				<string>Speak Record</string>
 				<key>Triggers</key>
@@ -3210,7 +3401,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3694,7 +3885,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493857184.87559599</real>
 				<key>ModificationDate</key>
-				<real>494032414.23839802</real>
+				<real>494113303.73230898</real>
 				<key>Name</key>
 				<string>Speak Sends A-E</string>
 				<key>Triggers</key>
@@ -3707,7 +3898,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3788,7 +3979,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493857413.65157801</real>
 				<key>ModificationDate</key>
-				<real>494032401.96744299</real>
+				<real>494113308.33756</real>
 				<key>Name</key>
 				<string>Speak Sends F-J</string>
 				<key>Triggers</key>
@@ -3801,7 +3992,7 @@ vo.output(msg)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -3874,7 +4065,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493840542.54986101</real>
 				<key>ModificationDate</key>
-				<real>494032390.52227402</real>
+				<real>494113312.852997</real>
 				<key>Name</key>
 				<string>Speak Solo</string>
 				<key>Triggers</key>
@@ -3887,7 +4078,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4154,7 +4345,7 @@ vo.output(value)
 				<key>CreationDate</key>
 				<real>493841616.18311203</real>
 				<key>ModificationDate</key>
-				<real>494032369.3563</real>
+				<real>494113317.29292101</real>
 				<key>Name</key>
 				<string>Speak Volume</string>
 				<key>Triggers</key>
@@ -4167,7 +4358,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -4224,7 +4415,6 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 track = mix.groups.byName(vo.voCursor.textUnderCursor())
 track.buttons.byName("TrackInput Monitor").click()
-delay(0.1)
 value = track.buttons.byName("TrackInput Monitor").value()
 if (value=="") value = "Off"
 vo.output(value)
@@ -4238,11 +4428,23 @@ vo.output(value)
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493845266.359146</real>
 				<key>ModificationDate</key>
-				<real>494033465.23021799</real>
+				<real>494115207.18177003</real>
 				<key>Name</key>
 				<string>Toggle Input Monitor</string>
 				<key>Triggers</key>
@@ -4255,7 +4457,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2560</integer>
+						<integer>4096</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -4314,7 +4516,6 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 track = mix.groups.byName(vo.voCursor.textUnderCursor())
 track.buttons.byName("Mute").click()
-delay(0.1)
 value = track.buttons.byName("Mute").value()
 if (value=="") value = "Off State"
 vo.output(value)
@@ -4328,11 +4529,23 @@ vo.output(value)
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493840383.85708898</real>
 				<key>ModificationDate</key>
-				<real>494032235.48479199</real>
+				<real>494115170.31533599</real>
 				<key>Name</key>
 				<string>Toggle Mute</string>
 				<key>Triggers</key>
@@ -4345,7 +4558,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -4404,7 +4617,6 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 track = mix.groups.byName(vo.voCursor.textUnderCursor())
 track.buttons.byName("Track Record Enable").click()
-delay(0.1)
 value = track.buttons.byName("Track Record Enable").value()
 if (value=="") value = "Not Armed"
 vo.output(value)
@@ -4418,11 +4630,23 @@ vo.output(value)
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493841347.92451298</real>
 				<key>ModificationDate</key>
-				<real>494032176.951464</real>
+				<real>494115157.25938499</real>
 				<key>Name</key>
 				<string>Toggle Record</string>
 				<key>Triggers</key>
@@ -4435,7 +4659,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
@@ -4494,7 +4718,6 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 track = mix.groups.byName(vo.voCursor.textUnderCursor())
 track.buttons.byName("Solo").click()
-delay(0.1)
 value = track.buttons.byName("Solo").value()
 if (value=="") value = "Not Selected"
 vo.output(value)
@@ -4508,11 +4731,23 @@ vo.output(value)
 						<key>UseText</key>
 						<true/>
 					</dict>
+					<dict>
+						<key>DeviceID</key>
+						<string>SOUNDEFFECTS</string>
+						<key>MacroActionType</key>
+						<string>PlaySound</string>
+						<key>Path</key>
+						<string>/System/Library/Sounds/Tink.aiff</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>Volume</key>
+						<integer>100</integer>
+					</dict>
 				</array>
 				<key>CreationDate</key>
 				<real>493840505.88860101</real>
 				<key>ModificationDate</key>
-				<real>494032154.99136299</real>
+				<real>494115608.69106698</real>
 				<key>Name</key>
 				<string>Toggle Solo</string>
 				<key>Triggers</key>
@@ -4525,7 +4760,7 @@ vo.output(value)
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>2048</integer>
+						<integer>0</integer>
 						<key>TapCount</key>
 						<integer>2</integer>
 					</dict>
