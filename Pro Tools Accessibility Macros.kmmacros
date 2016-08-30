@@ -694,6 +694,127 @@ vo.output("Option shift Click at "+x+", "+y)</string>
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "e"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+button = track.popUpButtons.whose({title:{_contains:"Track name"}})[0]
+value = button.name()
+value = value.replace("Track name", "")
+vo.output(value)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Edit:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+button = track.popUpButtons.whose({title:{_contains:"Playlist Selector"}})[0]
+button.click()
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494271722.28148401</real>
+				<key>ModificationDate</key>
+				<real>494271867.02305502</real>
+				<key>Name</key>
+				<string>Select Playlist Pop-Up Menu</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>35</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>366D9BB1-8DE8-4A77-BEF2-4C69C1878B03</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
 		<real>479078801.99380499</real>
 		<key>Macros</key>
 		<array>
@@ -1032,7 +1153,7 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 double()
 } else  {
 runSingle = true
@@ -1459,7 +1580,7 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 double()
 } else  {
 runSingle = true
@@ -1598,8 +1719,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -1729,7 +1850,7 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 double()
 } else  {
 runSingle = true
@@ -2364,8 +2485,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -2608,8 +2729,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -2740,8 +2861,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -2873,8 +2994,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -2998,8 +3119,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -3121,8 +3242,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -3601,8 +3722,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -3727,8 +3848,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -3850,8 +3971,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
@@ -3977,8 +4098,8 @@ command = kme.getvariable("command").split(".")
 start = new Date().getTime()
 kme.setvariable("command", {to:currentCommand+"."+start})
 if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 double()
+kme.playSound("/System/Library/Sounds/Tink.aiff")
 } else  {
 runSingle = true
 while (new Date().getTime()-start&lt;200) {
