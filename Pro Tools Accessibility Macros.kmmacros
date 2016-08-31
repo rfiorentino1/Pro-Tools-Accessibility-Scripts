@@ -453,138 +453,6 @@ if (runSingle) single()
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>493839659.76668698</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>currentCommand = "h"
-
-function single() {
-vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
-track = window.groups.byName(vo.voCursor.textUnderCursor())
-button = track.buttons.whose({name:{_contains:"Frozen"}})[0]
-value = button.name()
-vo.output(value)
-}
-
-function double() {
-vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
-track = window.groups.byName(vo.voCursor.textUnderCursor())
-button = track.buttons.whose({name:{_contains:"Frozen"}})[0]
-value = ""+button.name()
-button.click()
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
-while (true) {
-try {
-if (button.name() != value) break
-} catch (err) {
-}
-delay(0.1)
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
-}
-value = button.name()
-vo.output(value)
-}
-
-kme = Application("Keyboard Maestro Engine")
-command = kme.getvariable("command").split(".")
-start = new Date().getTime()
-kme.setvariable("command", {to:currentCommand+"."+start})
-if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-double()
-} else  {
-runSingle = true
-while (new Date().getTime()-start&lt;200) {
-command = kme.getvariable("command").split(".")
-if (currentCommand == command[0] &amp; command[1]&gt;start) {
-runSingle=false
-break;
-}
-}
-if (runSingle) single()
-}
-
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>494281775.05984801</real>
-				<key>ModificationDate</key>
-				<real>494284673.14413297</real>
-				<key>Name</key>
-				<string>Beta Speak/Toggle Freeze Status</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>3</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>DF394380-80A1-4B45-950F-8EFCB3C940A3</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility Inspector</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
-		<key>UID</key>
-		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
 		<real>479078801.99380499</real>
 		<key>Macros</key>
 		<array>
@@ -1409,7 +1277,9 @@ vo.output (msg)
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>vo = Application("VoiceOver")
+						<string>start = new Date().getTime()
+kme = Application("Keyboard Maestro Engine")
+vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
@@ -1423,6 +1293,10 @@ track = tracks[t]
 meter = tracks[t].sliders["Peak"].attributes[2].value()
 meter = meter.replace("minus ","-")
 if (meter&gt;=0) msg += track.name()+", "
+if (new Date().getTime()-start &gt; 1000) {
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+start = new Date().getTime()
+}
 }
 if (msg=="") msg = "No tracks are clipped"
 else msg = "Clipped: "+msg
@@ -1441,7 +1315,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493820126.83139598</real>
 				<key>ModificationDate</key>
-				<real>494233407.10199499</real>
+				<real>494289351.41097099</real>
 				<key>Name</key>
 				<string>Speak Clipped Tracks</string>
 				<key>Triggers</key>
@@ -1515,10 +1389,15 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 inputSpecifier = ObjectSpecifier().buttons["TrackInput Monitor"].value
 inputFilter = {_match:[inputSpecifier, "on"]}
 audioFilter = {name:{_contains:" - Audio Track"}}
-tracks = mix.groups.whose({_and:[audioFilter, inputFilter]})
+tracks = mix.groups.whose({_and:[audioFilter, inputFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t in tracks) {
-msg += tracks[t].name()+", "
+for (t=0; t&lt;tracks.length; t++) {
+msg += tracks[t]+", "
+if (new Date().getTime()-start &gt; 1000) {
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+start = new Date().getTime()
+}
 }
 if (msg == "") msg = "No track has input monitor on"
 else msg = "Input on: "+msg
@@ -1531,11 +1410,13 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.groups.whose({name:{_contains:"Audio Track"}})
-msg = ""
-for (t in tracks) {
-button = tracks[t].buttons["TrackInput Monitor"]
-if (button.value() == "on") button.click()
+inputSpecifier = ObjectSpecifier().buttons["TrackInput Monitor"].value
+inputFilter = {_match:[inputSpecifier, "on"]}
+audioFilter = {name:{_contains:" - Audio Track"}}
+tracks = mix.groups.whose({_and:[audioFilter, inputFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
+for (t=0; t&lt;tracks.length; t++) {
+mix.groups.byName(tracks[t]).buttons["TrackInput Monitor"].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
@@ -1578,7 +1459,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>493846509.576334</real>
 				<key>ModificationDate</key>
-				<real>494285489.31926101</real>
+				<real>494313931.53266197</real>
 				<key>Name</key>
 				<string>Speak Input Monitor-Enabled Tracks, Disable Input Monitor On All Tracks</string>
 				<key>Triggers</key>
@@ -1943,12 +1824,17 @@ groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
 muteSpecifier = ObjectSpecifier().buttons["Mute"].value
 muteFilter = {_match:[muteSpecifier,""]}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter]})
+soloFilter = {_match:[muteSpecifier,{_contains:"solo"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t in tracks) {
+for (t=0; t&lt;tracks.length; t++) {
 track = tracks[t]
-if (track.buttons["Mute"].value().indexOf("solo")&gt;-1) continue
-msg += track.name()+", "
+msg += track+", "
+if (new Date().getTime()-start &gt; 1000) {
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+start = new Date().getTime()
+}
 }
 if (msg=="") msg = "No tracks are muted."
 else msg = "Muted: "+msg
@@ -1963,11 +1849,13 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter]})
+muteSpecifier = ObjectSpecifier().buttons["Mute"].value
+muteFilter = {_match:[muteSpecifier,""]}
+soloFilter = {_match:[muteSpecifier,{_contains:"solo"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
-mute = tracks[t].buttons["Mute"]
-if (mute.value().indexOf("solo")&gt;-1) continue
-else if (mute.value().indexOf("on")&gt;-1) mute.click()
+mix.groups.byName(tracks[t]).buttons["Mute"].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
@@ -2008,7 +1896,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494285436.96652299</real>
+				<real>494314345.10123801</real>
 				<key>Name</key>
 				<string>Speak Muted Tracks, Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -2084,12 +1972,16 @@ masterFilter = {name:{_endsWith:" - Master Track"}}
 auxFilter = {name:{_endsWith:" - Aux Track"}}
 armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 armFilter = {_match:[armSpecifier,""]}
-tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter]})
+safeSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
+safeFilter = {_match:[safeSpecifier,{_contains:"safe"}]}
+tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t in tracks) {
-track = tracks[t]
-if (track.buttons["Track Record Enable"].value().indexOf("safe")==-1) {
-msg += track.name()+", "
+for (t=0; t&lt;tracks.length; t++) {
+msg += tracks[t]+", "
+if (new Date().getTime()-start &gt; 1000) {
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+start = new Date().getTime()
 }
 }
 if (msg=="") msg = msg+"No tracks are armed."
@@ -2106,10 +1998,15 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
 auxFilter = {name:{_endsWith:" - Aux Track"}}
-tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter]})
-for (t in tracks) {
-arm = tracks[t].buttons["Track Record Enable"]
-if (arm.value().indexOf("armed")&gt;-1) arm.click()
+armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
+armFilter = {_match:[armSpecifier,""]}
+safeSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
+safeFilter = {_match:[safeSpecifier,{_contains:"safe"}]}
+tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
+msg = ""
+for (t=0; t&lt;tracks.length; t++) {
+mix.groups.byName(tracks[t]).buttons["Track Record Enable"].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
@@ -2150,7 +2047,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494285455.02767402</real>
+				<real>494317258.65616298</real>
 				<key>Name</key>
 				<string>Speak Record-Enabled Tracks, Disarm All Record Enabled Tracks</string>
 				<key>Triggers</key>
@@ -2222,12 +2119,15 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 select = ObjectSpecifier().uiElements[1].buttons[0].name
-tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]})
+tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t in tracks) {
-name = tracks[t].uiElements.at(1).buttons[0].name()
-name = name.replace("Selected", "")
-msg += name+", "
+msg += tracks[t].replace(/^Selected(.*?  \w+) track$/,"$1")+", "
+if (new Date().getTime()-start &gt; 1000) {
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+start = new Date().getTime()
+}
 }
 if (msg=="") msg = "No tracks are currently selected."
 else msg = "Selected: "+msg
@@ -2240,10 +2140,12 @@ sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-tracks = mix.tables.byName("Track List").rows
+select = ObjectSpecifier().uiElements[1].buttons[0].name
+tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
-button = tracks[t].uiElements[1].buttons[0]
-if (button.name().indexOf("Selected")&gt;-1) button.click()
+select = ObjectSpecifier().uiElements[1].buttons[0].name
+mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
@@ -2284,7 +2186,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>494285328.28657299</real>
+				<real>494317084.91932303</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks, Deselect All Tracks</string>
 				<key>Triggers</key>
@@ -2857,12 +2759,15 @@ groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
 soloSpecifier = ObjectSpecifier().buttons["Solo"].value
 soloFilter = {_match:[soloSpecifier,""]}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter]})
+safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t in tracks) {
-track = tracks[t]
-if (track.buttons["solo"].value().indexOf("safe")==-1) {
-msg += track.name()+", "
+msg += tracks[t]+", "
+if (new Date().getTime()-start &gt; 1000) {
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+start = new Date().getTime()
 }
 }
 if (msg=="") msg = msg+"No tracks are soloed."
@@ -2878,10 +2783,13 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 groupFilter = {name:{_beginsWith:"Group List"}}
 masterFilter = {name:{_endsWith:" - Master Track"}}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter]})
+soloSpecifier = ObjectSpecifier().buttons["Solo"].value
+soloFilter = {_match:[soloSpecifier,""]}
+safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter]}).name()
+tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
-solo = tracks[t].buttons["Solo"]
-if (solo.value().indexOf("Selected")&gt;-1) solo.click()
+mix.groups.byName(tracks[t]).buttons["Solo"].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
@@ -2921,7 +2829,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494285346.58765203</real>
+				<real>494314754.45120502</real>
 				<key>Name</key>
 				<string>Speak Soloed Tracks, Unsolo All Tracks</string>
 				<key>Triggers</key>
@@ -4340,6 +4248,138 @@ if (runSingle) single()
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
+						<string>currentCommand = "h"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
+track = window.groups.byName(vo.voCursor.textUnderCursor())
+button = track.buttons.whose({name:{_contains:"Frozen"}})[0]
+value = button.name()
+vo.output(value)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
+track = window.groups.byName(vo.voCursor.textUnderCursor())
+button = track.buttons.whose({name:{_contains:"Frozen"}})[0]
+value = ""+button.name()
+button.click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+while (true) {
+try {
+if (button.name() != value) break
+} catch (err) {
+}
+delay(0.1)
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+value = button.name()
+vo.output(value)
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494281775.05984801</real>
+				<key>ModificationDate</key>
+				<real>494317436.88125801</real>
+				<key>Name</key>
+				<string>Speak/Toggle Freeze Status</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>3</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>DF394380-80A1-4B45-950F-8EFCB3C940A3</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
 						<string>currentCommand = "k"
 
 function single() {
@@ -4818,6 +4858,91 @@ if (runSingle) single()
 		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
 		<key>UID</key>
 		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>479078801.99380499</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+finder = Application("Finder")
+bounds = finder.desktop.window.bounds()
+w=bounds["width"]
+h=bounds["height"]
+pt = Application("System Events").applicationProcesses.byName("Pro Tools")
+window = pt.windows()[0]
+window.position.set([0,0])
+delay(0.5)
+window.size.set([w-1,h-1])
+delay(0.5)
+position = window.position()
+size = window.size()
+vo.output("Changing "+window.name()+" to "+"x: "+position[0]+", y: "+position[1]+", w: "+size[0]+", h: "+size[1])
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494294855.25544697</real>
+				<key>ModificationDate</key>
+				<real>494307721.63236099</real>
+				<key>Name</key>
+				<string>Zoom</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>StatusMenu</string>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>688B5089-D4AD-403E-9114-57814553015A</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<key>UID</key>
+		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
 	</dict>
 </array>
 </plist>
