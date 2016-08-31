@@ -779,125 +779,6 @@ if (runSingle) single()
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>493839659.76668698</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>currentCommand = "b"
-
-function single() {
-vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
-track = window.groups.byName(vo.voCursor.textUnderCursor())
-button = track.uiElements.whose({name:{_contains:"Timebase selector"}})[0]
-value = button.name().replace("Timebase selector", "")
-vo.output(value)
-}
-
-function double() {
-vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
-track = window.groups.byName(vo.voCursor.textUnderCursor())
-button = track.uiElements.whose({name:{_contains:"Timebase selector"}})[0].click()
-}
-
-kme = Application("Keyboard Maestro Engine")
-command = kme.getvariable("command").split(".")
-start = new Date().getTime()
-kme.setvariable("command", {to:currentCommand+"."+start})
-if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
-double()
-} else  {
-runSingle = true
-while (new Date().getTime()-start&lt;200) {
-command = kme.getvariable("command").split(".")
-if (currentCommand == command[0] &amp; command[1]&gt;start) {
-runSingle=false
-break;
-}
-}
-if (runSingle) single()
-}
-
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>494354900.76961601</real>
-				<key>ModificationDate</key>
-				<real>494357355.69214499</real>
-				<key>Name</key>
-				<string>Beta: Speak/Select Track Base</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>11</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>87F99400-977E-4A95-9FD5-3918BEAF93CE</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility Inspector</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
-		<key>UID</key>
-		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
 		<real>479078801.99380499</real>
 		<key>Macros</key>
 		<array>
@@ -961,6 +842,126 @@ vo.output (msg)
 				</array>
 				<key>UID</key>
 				<string>F94D2326-4E17-4F5C-8A08-C06CF944F61F</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
+		<key>UID</key>
+		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>479078801.99380499</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>kme = Application("Keyboard Maestro Engine")
+vo = Application("VoiceOver")
+bounds = vo.voCursor.bounds()
+x = bounds["x"]
+y = bounds["y"]
+width = bounds["width"]
+height = bounds["height"]
+x = x+width/2
+y = y+height/2
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+vo.output("Command Click at "+x+", "+y)</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>MoveAndClick</string>
+						<key>Button</key>
+						<integer>0</integer>
+						<key>ClickCount</key>
+						<integer>1</integer>
+						<key>DisplayMatches</key>
+						<false/>
+						<key>DragHorizontalPosition</key>
+						<string>0</string>
+						<key>DragVerticalPosition</key>
+						<string>0</string>
+						<key>Fuzz</key>
+						<integer>15</integer>
+						<key>HorizontalPositionExpression</key>
+						<string>x</string>
+						<key>MacroActionType</key>
+						<string>MouseMoveAndClick</string>
+						<key>Modifiers</key>
+						<integer>256</integer>
+						<key>MouseDrag</key>
+						<string>None</string>
+						<key>Relative</key>
+						<string>Absolute</string>
+						<key>RelativeCorner</key>
+						<string>TopLeft</string>
+						<key>RestoreMouseLocation</key>
+						<false/>
+						<key>VerticalPositionExpression</key>
+						<string>y</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494367829.92569602</real>
+				<key>ModificationDate</key>
+				<real>494368539.30747002</real>
+				<key>Name</key>
+				<string>Command-Click</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>7</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>4352</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>8B11445F-D0A5-48D6-BEF8-4F1D668672C8</string>
 			</dict>
 		</array>
 		<key>Name</key>
@@ -1510,6 +1511,846 @@ vo.output("Option shift Click at "+x+", "+y)</string>
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[0].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494370318.29252899</real>
+				<key>ModificationDate</key>
+				<real>494372035.48803502</real>
+				<key>Name</key>
+				<string>Select Insert A</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>18</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>A913784B-20F4-465C-BEEE-060DB4CE1B08</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[1].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371507.03267097</real>
+				<key>ModificationDate</key>
+				<real>494371755.53838497</real>
+				<key>Name</key>
+				<string>Select Insert B</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>19</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>E7C506D4-F2CF-4032-BE01-B7A2DBDE4098</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[2].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371642.79987502</real>
+				<key>ModificationDate</key>
+				<real>494371766.48485702</real>
+				<key>Name</key>
+				<string>Select Insert C</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>20</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>EF605A53-014F-4FD5-9C1B-14E2220383C1</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[3].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371689.82588601</real>
+				<key>ModificationDate</key>
+				<real>494371715.07096899</real>
+				<key>Name</key>
+				<string>Select Insert D</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>21</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>02C3CC1C-9126-44D2-88D2-0AF962790972</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[4].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371919.34107703</real>
+				<key>ModificationDate</key>
+				<real>494371936.72269398</real>
+				<key>Name</key>
+				<string>Select Insert E</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>23</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>2056F943-E789-4487-9013-97A3C9C521E6</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[0].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371953.46295601</real>
+				<key>ModificationDate</key>
+				<real>494372174.67509902</real>
+				<key>Name</key>
+				<string>Select Insert F</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>22</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>E842D842-DD6A-4253-890B-E3F4D9C04D22</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[1].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371953.46298301</real>
+				<key>ModificationDate</key>
+				<real>494372186.67931998</real>
+				<key>Name</key>
+				<string>Select Insert G</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>26</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>F2B12D67-8618-41ED-AEB7-0A77C8576CC1</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[2].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371953.46299601</real>
+				<key>ModificationDate</key>
+				<real>494372246.47333801</real>
+				<key>Name</key>
+				<string>Select Insert H</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>28</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>FCC1BB1D-D756-45E4-BCD7-DC142F33126B</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[3].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371953.46300602</real>
+				<key>ModificationDate</key>
+				<real>494372271.98077399</real>
+				<key>Name</key>
+				<string>Select Insert I</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>21</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>9A62399E-80C2-4784-94F1-C32CAE5FCF92</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[4].click()
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371953.46301901</real>
+				<key>ModificationDate</key>
+				<real>494372299.16161501</real>
+				<key>Name</key>
+				<string>Select Insert J</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>23</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>512</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>9D34C1E5-DB04-4BA4-A6E5-0AF3EA0213D7</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
 		<real>479078801.99380499</real>
 		<key>Macros</key>
 		<array>
@@ -1946,202 +2787,6 @@ if (runSingle) single()
 		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
 		<key>UID</key>
 		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>493839659.76668698</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>Window</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-track = mix.groups.byName(vo.voCursor.textUnderCursor())
-inserts = track.groups["Inserts A-E"].buttons
-msg = ""
-for (i in inserts) {
-insert = inserts[i]
-value = insert.value()
-name = insert.name()
-if (value.indexOf("unassigned")==0 | name.indexOf("Insert Assignment")&gt;-1)  continue
-slot = name.replace("Insert selector", "")+" "+value
-name = name.replace("selector", "Assignment")
-assignment = inserts.whose({name:{_contains:name}})[0]
-value = assignment.value().replace("Insert Assignment ", "")
-msg += slot+": "+value+". "
-}
-if (msg=="") msg="Nothing is inserted."
-vo.output(msg)
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>493856661.99573898</real>
-				<key>ModificationDate</key>
-				<real>494363105.23650801</real>
-				<key>Name</key>
-				<string>Speak Inserts A-E</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>18</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>B4127D04-E78A-4DC5-9172-7103716E5A2B</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility Inspector</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
-		<key>UID</key>
-		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>493839659.76668698</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>Window</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-track = mix.groups.byName(vo.voCursor.textUnderCursor())
-inserts = track.groups["Inserts F-J"].buttons
-msg = ""
-for (i in inserts) {
-insert = inserts[i]
-value = insert.value()
-name = insert.name()
-if (value.indexOf("unassigned")==0 | name.indexOf("Insert Assignment")&gt;-1)  continue
-slot = name.replace("Insert selector", "")+" "+value
-name = name.replace("selector", "Assignment")
-assignment = inserts.whose({name:{_contains:name}})[0]
-value = assignment.value().replace("Insert Assignment ", "")
-msg += slot+": "+value+". "
-}
-if (msg=="") msg="Nothing is inserted."
-vo.output(msg)
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>493857077.87562102</real>
-				<key>ModificationDate</key>
-				<real>494363212.67172498</real>
-				<key>Name</key>
-				<string>Speak Inserts F-J</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>19</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>8CE15288-B4F3-490F-928D-E4F13B2103AD</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility Inspector</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
-		<key>UID</key>
-		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
@@ -3001,200 +3646,6 @@ vo.output (msg)
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>493839659.76668698</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-track = mix.groups.byName(vo.voCursor.textUnderCursor())
-sends = track.groups["Sends A-E"].buttons
-msg = ""
-for (s in sends) {
-value = sends[s].value()
-name = sends[s].name()
-if (value.indexOf("unassigned")==0 | name.indexOf("Assignment")&gt;-1) continue
-slot = name.replace("Send selector", "")+" "+value
-name = name.replace("selector", "Assignment")
-assignment = sends.whose({name:{_contains:name}})[0]
-value = assignment.value().replace("Send Assignment ", "")
-msg += slot+": "+value+". "
-}
-if (msg=="") msg="Nothing is assigned."
-vo.output(msg)
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>493857184.87559599</real>
-				<key>ModificationDate</key>
-				<real>494363935.63189399</real>
-				<key>Name</key>
-				<string>Speak Sends A-E</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>20</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>0649E57A-EE87-4D64-98AA-9CF2EF8723A7</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility Inspector</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
-		<key>UID</key>
-		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>493839659.76668698</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows
-mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
-track = mix.groups.byName(vo.voCursor.textUnderCursor())
-sends = track.groups["Sends F-J"].buttons
-msg = ""
-for (s in sends) {
-value = sends[s].value()
-name = sends[s].name()
-if (value.indexOf("unassigned")==0 | name.indexOf("Assignment")&gt;-1) continue
-slot = name.replace("Send selector", "")+" "+value
-name = name.replace("selector", "Assignment")
-assignment = sends.whose({name:{_contains:name}})[0]
-value = assignment.value().replace("Send Assignment ", "")
-msg += slot+": "+value+". "
-}
-if (msg=="") msg="Nothing is assigned."
-vo.output(msg)
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>493857413.65157801</real>
-				<key>ModificationDate</key>
-				<real>494363992.10758799</real>
-				<key>Name</key>
-				<string>Speak Sends F-J</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>21</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>90F721F8-16BF-43EF-927F-B23334E67D00</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility Inspector</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
-		<key>UID</key>
-		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
 		<real>479078801.99380499</real>
 		<key>Macros</key>
 		<array>
@@ -3555,6 +4006,1238 @@ if (runSingle) single()
 				</array>
 				<key>UID</key>
 				<string>BC36AF98-3D2F-45D4-920E-7F61A03AD411</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "1"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts A-E"].buttons[0]
+assignment = track.groups["Inserts A-E"].buttons[5]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[5].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494368158.86354703</real>
+				<key>ModificationDate</key>
+				<real>494371783.41635102</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts A</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>18</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>F08671D6-BAA1-455E-8AE1-E9908063345A</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "2"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts A-E"].buttons[1]
+assignment = track.groups["Inserts A-E"].buttons[6]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[6].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494370393.39905602</real>
+				<key>ModificationDate</key>
+				<real>494371796.39858103</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts B</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>19</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>43E15266-F1C0-4131-B6D0-3A068A08288D</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "3"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts A-E"].buttons[2]
+assignment = track.groups["Inserts A-E"].buttons[7]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[7].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494370470.32766902</real>
+				<key>ModificationDate</key>
+				<real>494371809.16767102</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts C</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>20</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>E100309E-77A7-4BDC-9775-11A0EF423C3B</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "4"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts A-E"].buttons[3]
+assignment = track.groups["Inserts A-E"].buttons[8]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[8].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494370761.07785898</real>
+				<key>ModificationDate</key>
+				<real>494371817.06556398</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts D</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>21</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>6F1354E9-E864-4C26-B1F6-DAA75E6538A3</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "5"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts A-E"].buttons[4]
+assignment = track.groups["Inserts A-E"].buttons[9]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts A-E"].buttons[9].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494370830.17694801</real>
+				<key>ModificationDate</key>
+				<real>494371831.13951802</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts E</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>23</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>EEC95BC4-31F9-497F-9679-4BF31E87066F</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "6"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts F-J"].buttons[0]
+assignment = track.groups["Inserts F-J"].buttons[5]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[5].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371085.10548002</real>
+				<key>ModificationDate</key>
+				<real>494371842.52441502</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts F</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>22</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>F4F9AA33-3B0D-4B09-A1EB-0BEC1C57D2B7</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "7"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts F-J"].buttons[1]
+assignment = track.groups["Inserts F-J"].buttons[6]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[6].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371085.10550702</real>
+				<key>ModificationDate</key>
+				<real>494371850.78208399</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts G</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>26</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>5094EA2B-D33E-4F60-A490-E36231A30FFF</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "8"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts F-J"].buttons[2]
+assignment = track.groups["Inserts F-J"].buttons[7]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[7].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371085.10552001</real>
+				<key>ModificationDate</key>
+				<real>494371859.68107402</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts h</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>28</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>9DEAD364-0562-46AF-BE1E-62812AF81B9C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "9"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts F-J"].buttons[3]
+assignment = track.groups["Inserts F-J"].buttons[8]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[8].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371085.10554302</real>
+				<key>ModificationDate</key>
+				<real>494371869.60394901</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts I</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>25</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>C0A25523-D14C-4639-928F-6CE252F3EC50</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "0"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+selector = track.groups["Inserts F-J"].buttons[4]
+assignment = track.groups["Inserts F-J"].buttons[9]
+slot = selector.name().replace("Insert selector", "")+". "+selector.value().replace("unassigned", "")
+assignment = assignment.value().replace("Insert Assignment ", "")
+msg = slot+": "+assignment
+vo.output(msg)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
+track = mix.groups.byName(vo.voCursor.textUnderCursor())
+track.groups["Inserts F-J"].buttons[9].click()
+kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494371085.10555601</real>
+				<key>ModificationDate</key>
+				<real>494371879.02017802</real>
+				<key>Name</key>
+				<string>Speak/Open Inserts J</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>29</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>3F5059EA-018E-4AAA-AFC9-BE6B58E79152</string>
 			</dict>
 		</array>
 		<key>Name</key>
@@ -4669,6 +6352,125 @@ if (runSingle) single()
 				</array>
 				<key>UID</key>
 				<string>366D9BB1-8DE8-4A77-BEF2-4C69C1878B03</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Pro Tools Accessibility Inspector</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.avid.ProTools</string>
+					<key>Name</key>
+					<string>Pro Tools</string>
+					<key>NewFile</key>
+					<string>/Applications/Pro Tools.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
+		<key>UID</key>
+		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>493839659.76668698</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>DisplayKind</key>
+						<string>None</string>
+						<key>IncludeStdErr</key>
+						<true/>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScriptForAutomation</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>currentCommand = "b"
+
+function single() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
+track = window.groups.byName(vo.voCursor.textUnderCursor())
+button = track.uiElements.whose({name:{_contains:"Timebase selector"}})[0]
+value = button.name().replace("Timebase selector", "")
+vo.output(value)
+}
+
+function double() {
+vo = Application("VoiceOver")
+sys = Application("System Events")
+pt = sys.applicationProcesses.byName("Pro Tools")
+windows = pt.windows
+window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
+track = window.groups.byName(vo.voCursor.textUnderCursor())
+button = track.uiElements.whose({name:{_contains:"Timebase selector"}})[0].click()
+}
+
+kme = Application("Keyboard Maestro Engine")
+command = kme.getvariable("command").split(".")
+start = new Date().getTime()
+kme.setvariable("command", {to:currentCommand+"."+start})
+if (currentCommand == command[0] &amp; start-command[1]&lt;200) {
+double()
+} else  {
+runSingle = true
+while (new Date().getTime()-start&lt;200) {
+command = kme.getvariable("command").split(".")
+if (currentCommand == command[0] &amp; command[1]&gt;start) {
+runSingle=false
+break;
+}
+}
+if (runSingle) single()
+}
+
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>494354900.76961601</real>
+				<key>ModificationDate</key>
+				<real>494371896.58192599</real>
+				<key>Name</key>
+				<string>Speak/Select Track Base</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>11</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>87F99400-977E-4A95-9FD5-3918BEAF93CE</string>
 			</dict>
 		</array>
 		<key>Name</key>
