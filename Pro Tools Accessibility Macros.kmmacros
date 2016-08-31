@@ -1825,7 +1825,8 @@ masterFilter = {name:{_endsWith:" - Master Track"}}
 muteSpecifier = ObjectSpecifier().buttons["Mute"].value
 muteFilter = {_match:[muteSpecifier,""]}
 soloFilter = {_match:[muteSpecifier,{_contains:"solo"}]}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter]}).name()
+inactiveFilter = {_match:[muteSpecifier,{_contains:"inactive"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter, inactiveFilter]}).name()
 tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t=0; t&lt;tracks.length; t++) {
@@ -1852,7 +1853,8 @@ masterFilter = {name:{_endsWith:" - Master Track"}}
 muteSpecifier = ObjectSpecifier().buttons["Mute"].value
 muteFilter = {_match:[muteSpecifier,""]}
 soloFilter = {_match:[muteSpecifier,{_contains:"solo"}]}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter]}).name()
+inactiveFilter = {_match:[muteSpecifier,{_contains:"inactive"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter, inactiveFilter]}).name()
 tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
 mix.groups.byName(tracks[t]).buttons["Mute"].click()
@@ -1896,7 +1898,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494314345.10123801</real>
+				<real>494351675.92641699</real>
 				<key>Name</key>
 				<string>Speak Muted Tracks, Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -1972,9 +1974,10 @@ masterFilter = {name:{_endsWith:" - Master Track"}}
 auxFilter = {name:{_endsWith:" - Aux Track"}}
 armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 armFilter = {_match:[armSpecifier,""]}
-safeSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
-safeFilter = {_match:[safeSpecifier,{_contains:"safe"}]}
-tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter]}).name()
+safeFilter = {_match:[armSpecifier,{_contains:"safe"}]}
+inactiveFilter = {_match:[armSpecifier,{_contains:"inactive"}]}
+
+tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter, inactiveFilter]}).name()
 tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t=0; t&lt;tracks.length; t++) {
@@ -2002,7 +2005,8 @@ armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 armFilter = {_match:[armSpecifier,""]}
 safeSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 safeFilter = {_match:[safeSpecifier,{_contains:"safe"}]}
-tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter]}).name()
+inactiveFilter = {_match:[armSpecifier,{_contains:"inactive"}]}
+tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter, inactiveFilter]}).name()
 tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t=0; t&lt;tracks.length; t++) {
@@ -2047,7 +2051,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494317258.65616298</real>
+				<real>494351445.038387</real>
 				<key>Name</key>
 				<string>Speak Record-Enabled Tracks, Disarm All Record Enabled Tracks</string>
 				<key>Triggers</key>
@@ -2141,11 +2145,12 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 select = ObjectSpecifier().uiElements[1].buttons[0].name
-tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
-for (t in tracks) {
+tracks = mix.tables.byName("Track List").rows
+json = tracks.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
+json = (JSON.parse(JSON.stringify(json)))
+for (j in json) {
 select = ObjectSpecifier().uiElements[1].buttons[0].name
-mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].click()
+tracks.whose({_match:[select, {_contains:"Selected"}]}).uiElements[1].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
@@ -2186,7 +2191,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>494317084.91932303</real>
+				<real>494350683.73738599</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks, Deselect All Tracks</string>
 				<key>Triggers</key>
@@ -2760,7 +2765,8 @@ masterFilter = {name:{_endsWith:" - Master Track"}}
 soloSpecifier = ObjectSpecifier().buttons["Solo"].value
 soloFilter = {_match:[soloSpecifier,""]}
 safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter]}).name()
+inactiveFilter = {_match:[soloSpecifier,{_contains:"inactive"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter, inactiveFilter]}).name()
 tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t in tracks) {
@@ -2786,7 +2792,8 @@ masterFilter = {name:{_endsWith:" - Master Track"}}
 soloSpecifier = ObjectSpecifier().buttons["Solo"].value
 soloFilter = {_match:[soloSpecifier,""]}
 safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
-tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter]}).name()
+inactiveFilter = {_match:[soloSpecifier,{_contains:"inactive"}]}
+tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter, inactiveFilter]}).name()
 tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
 mix.groups.byName(tracks[t]).buttons["Solo"].click()
@@ -2829,7 +2836,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494314754.45120502</real>
+				<real>494351558.78912997</real>
 				<key>Name</key>
 				<string>Speak Soloed Tracks, Unsolo All Tracks</string>
 				<key>Triggers</key>
@@ -4858,91 +4865,6 @@ if (runSingle) single()
 		<string>D80BD2FE-C4A0-4545-A7ED-3F7B17CF9B42</string>
 		<key>UID</key>
 		<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
-		<real>479078801.99380499</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>vo = Application("VoiceOver")
-finder = Application("Finder")
-bounds = finder.desktop.window.bounds()
-w=bounds["width"]
-h=bounds["height"]
-pt = Application("System Events").applicationProcesses.byName("Pro Tools")
-window = pt.windows()[0]
-window.position.set([0,0])
-delay(0.5)
-window.size.set([w-1,h-1])
-delay(0.5)
-position = window.position()
-size = window.size()
-vo.output("Changing "+window.name()+" to "+"x: "+position[0]+", y: "+position[1]+", w: "+size[0]+", h: "+size[1])
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>494294855.25544697</real>
-				<key>ModificationDate</key>
-				<real>494307721.63236099</real>
-				<key>Name</key>
-				<string>Zoom</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>MacroTriggerType</key>
-						<string>StatusMenu</string>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>688B5089-D4AD-403E-9114-57814553015A</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
-		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
 	</dict>
 </array>
 </plist>
