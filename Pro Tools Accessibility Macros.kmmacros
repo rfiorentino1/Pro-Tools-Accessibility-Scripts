@@ -1548,7 +1548,7 @@ track.groups["Inserts A-E"].buttons[0].click()
 				<key>CreationDate</key>
 				<real>494370318.29252899</real>
 				<key>ModificationDate</key>
-				<real>494372035.48803502</real>
+				<real>494374419.68432897</real>
 				<key>Name</key>
 				<string>Select Insert A</string>
 				<key>Triggers</key>
@@ -1557,7 +1557,7 @@ track.groups["Inserts A-E"].buttons[0].click()
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>18</integer>
+						<integer>48</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -1632,7 +1632,7 @@ track.groups["Inserts A-E"].buttons[1].click()
 				<key>CreationDate</key>
 				<real>494371507.03267097</real>
 				<key>ModificationDate</key>
-				<real>494371755.53838497</real>
+				<real>494374426.70438302</real>
 				<key>Name</key>
 				<string>Select Insert B</string>
 				<key>Triggers</key>
@@ -1645,7 +1645,7 @@ track.groups["Inserts A-E"].buttons[1].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1716,7 +1716,7 @@ track.groups["Inserts A-E"].buttons[2].click()
 				<key>CreationDate</key>
 				<real>494371642.79987502</real>
 				<key>ModificationDate</key>
-				<real>494371766.48485702</real>
+				<real>494374432.53161001</real>
 				<key>Name</key>
 				<string>Select Insert C</string>
 				<key>Triggers</key>
@@ -1729,7 +1729,7 @@ track.groups["Inserts A-E"].buttons[2].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1800,7 +1800,7 @@ track.groups["Inserts A-E"].buttons[3].click()
 				<key>CreationDate</key>
 				<real>494371689.82588601</real>
 				<key>ModificationDate</key>
-				<real>494371715.07096899</real>
+				<real>494374438.10085899</real>
 				<key>Name</key>
 				<string>Select Insert D</string>
 				<key>Triggers</key>
@@ -1813,7 +1813,7 @@ track.groups["Inserts A-E"].buttons[3].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1884,7 +1884,7 @@ track.groups["Inserts A-E"].buttons[4].click()
 				<key>CreationDate</key>
 				<real>494371919.34107703</real>
 				<key>ModificationDate</key>
-				<real>494371936.72269398</real>
+				<real>494374443.388412</real>
 				<key>Name</key>
 				<string>Select Insert E</string>
 				<key>Triggers</key>
@@ -1897,7 +1897,7 @@ track.groups["Inserts A-E"].buttons[4].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -1968,7 +1968,7 @@ track.groups["Inserts F-J"].buttons[0].click()
 				<key>CreationDate</key>
 				<real>494371953.46295601</real>
 				<key>ModificationDate</key>
-				<real>494372174.67509902</real>
+				<real>494374448.82211798</real>
 				<key>Name</key>
 				<string>Select Insert F</string>
 				<key>Triggers</key>
@@ -1981,7 +1981,7 @@ track.groups["Inserts F-J"].buttons[0].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2052,7 +2052,7 @@ track.groups["Inserts F-J"].buttons[1].click()
 				<key>CreationDate</key>
 				<real>494371953.46298301</real>
 				<key>ModificationDate</key>
-				<real>494372186.67931998</real>
+				<real>494374454.17737597</real>
 				<key>Name</key>
 				<string>Select Insert G</string>
 				<key>Triggers</key>
@@ -2065,7 +2065,7 @@ track.groups["Inserts F-J"].buttons[1].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2136,7 +2136,7 @@ track.groups["Inserts F-J"].buttons[2].click()
 				<key>CreationDate</key>
 				<real>494371953.46299601</real>
 				<key>ModificationDate</key>
-				<real>494372246.47333801</real>
+				<real>494374458.76736403</real>
 				<key>Name</key>
 				<string>Select Insert H</string>
 				<key>Triggers</key>
@@ -2149,7 +2149,7 @@ track.groups["Inserts F-J"].buttons[2].click()
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2220,7 +2220,7 @@ track.groups["Inserts F-J"].buttons[3].click()
 				<key>CreationDate</key>
 				<real>494371953.46300602</real>
 				<key>ModificationDate</key>
-				<real>494372271.98077399</real>
+				<real>494374462.94117099</real>
 				<key>Name</key>
 				<string>Select Insert I</string>
 				<key>Triggers</key>
@@ -2229,11 +2229,11 @@ track.groups["Inserts F-J"].buttons[3].click()
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>21</integer>
+						<integer>25</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2304,7 +2304,7 @@ track.groups["Inserts F-J"].buttons[4].click()
 				<key>CreationDate</key>
 				<real>494371953.46301901</real>
 				<key>ModificationDate</key>
-				<real>494372299.16161501</real>
+				<real>494374476.06996602</real>
 				<key>Name</key>
 				<string>Select Insert J</string>
 				<key>Triggers</key>
@@ -2313,11 +2313,11 @@ track.groups["Inserts F-J"].buttons[4].click()
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>23</integer>
+						<integer>29</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>512</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
