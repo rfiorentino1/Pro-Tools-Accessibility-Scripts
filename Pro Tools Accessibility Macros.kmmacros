@@ -705,8 +705,13 @@ if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
 vo.output("Command Click at "+x+", "+y)
-} else vo.output("You are trying to click outside "+window.name()+".")
-</string>
+} else {
+vo.output("Object is outside window, "+window.name()+".")
+x=-1
+y=-1
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+}</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -752,7 +757,7 @@ vo.output("Command Click at "+x+", "+y)
 				<key>CreationDate</key>
 				<real>494431551.48258799</real>
 				<key>ModificationDate</key>
-				<real>494431793.136572</real>
+				<real>494443960.83718199</real>
 				<key>Name</key>
 				<string>Command+Click</string>
 				<key>Triggers</key>
@@ -841,8 +846,13 @@ if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
 vo.output("Command Option Click at "+x+", "+y)
-} else vo.output("You are trying to click outside "+window.name()+".")
-</string>
+} else {
+vo.output("Object is outside window, "+window.name()+".")
+x=-1
+y=-1
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+}</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -888,7 +898,7 @@ vo.output("Command Option Click at "+x+", "+y)
 				<key>CreationDate</key>
 				<real>494431658.71946698</real>
 				<key>ModificationDate</key>
-				<real>494431814.87214202</real>
+				<real>494443951.13162202</real>
 				<key>Name</key>
 				<string>Command+Option+Click</string>
 				<key>Triggers</key>
@@ -977,8 +987,13 @@ if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
 vo.output("Control Click at "+x+", "+y)
-} else vo.output("You are trying to click outside "+window.name()+".")
-</string>
+} else {
+vo.output("Object is outside window, "+window.name()+".")
+x=-1
+y=-1
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+}</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -1024,7 +1039,7 @@ vo.output("Control Click at "+x+", "+y)
 				<key>CreationDate</key>
 				<real>494431491.72162199</real>
 				<key>ModificationDate</key>
-				<real>494431766.74365002</real>
+				<real>494443935.24545002</real>
 				<key>Name</key>
 				<string>Control+Click</string>
 				<key>Triggers</key>
@@ -1393,8 +1408,13 @@ if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
 vo.output("Option Click at "+x+", "+y)
-} else vo.output("You are trying to click outside "+window.name()+".")
-</string>
+} else {
+vo.output("Object is outside window, "+window.name()+".")
+x=-1
+y=-1
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+}</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -1440,7 +1460,7 @@ vo.output("Option Click at "+x+", "+y)
 				<key>CreationDate</key>
 				<real>482163083.14183003</real>
 				<key>ModificationDate</key>
-				<real>494431528.25094002</real>
+				<real>494443981.47727799</real>
 				<key>Name</key>
 				<string>Option+Click</string>
 				<key>Triggers</key>
@@ -1529,8 +1549,13 @@ if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
 vo.output("Option Shift Click at "+x+", "+y)
-} else vo.output("You are trying to click outside "+window.name()+".")
-</string>
+} else {
+vo.output("Object is outside window, "+window.name()+".")
+x=-1
+y=-1
+kme.setvariable("x", {to:""+x})
+kme.setvariable("y", {to:""+y})
+}</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -1576,7 +1601,7 @@ vo.output("Option Shift Click at "+x+", "+y)
 				<key>CreationDate</key>
 				<real>494431421.92528403</real>
 				<key>ModificationDate</key>
-				<real>494431838.497437</real>
+				<real>494443996.05755401</real>
 				<key>Name</key>
 				<string>option+Shift+Click</string>
 				<key>Triggers</key>
@@ -5071,108 +5096,6 @@ if (runSingle) single()
 		<key>Activate</key>
 		<string>Normal</string>
 		<key>CreationDate</key>
-		<real>479078801.99380499</real>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>DisplayKind</key>
-						<string>None</string>
-						<key>IncludeStdErr</key>
-						<true/>
-						<key>MacroActionType</key>
-						<string>ExecuteJavaScriptForAutomation</string>
-						<key>Path</key>
-						<string></string>
-						<key>Text</key>
-						<string>screen = Application("Finder").desktop.window.bounds()
-sw=screen["width"]
-sh=screen["height"]
-kme = Application("Keyboard Maestro Engine")
-vo = Application("VoiceOver")
-sys = Application("System Events")
-pt = sys.applicationProcesses.byName("Pro Tools")
-window = pt.windows[0]
-wPosition = window.position()
-wSize = window.size()
-
-tlx = wPosition[0]
-tly = wPosition[1]
-brx=tlx+wSize[0]
-bry=tly+wSize[1]
-
-bounds = vo.voCursor.bounds()
-x = bounds["x"]
-y = bounds["y"]
-w = bounds["width"]
-h = bounds["height"]
-x = x+w/2
-y = y+h/2
-msg = "Voiceover: "+x+", "+y+"; Inside "+window.name()+", top left: "+tlx+", "+tly+", bottom right: "+brx+", "+bry
-vo.output(msg)
-</string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-						<key>TrimResults</key>
-						<true/>
-						<key>TrimResultsNew</key>
-						<true/>
-						<key>UseText</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>494342831.68726403</real>
-				<key>ModificationDate</key>
-				<real>494431339.56273198</real>
-				<key>Name</key>
-				<string>Speak Window Size</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>13</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>6400</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>696B38D0-AF57-4991-83DD-DFD03F1A693B</string>
-			</dict>
-		</array>
-		<key>Name</key>
-		<string>Pro Tools Accessibility</string>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.avid.ProTools</string>
-					<key>Name</key>
-					<string>Pro Tools</string>
-					<key>NewFile</key>
-					<string>/Applications/Pro Tools.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>A33CD6B2-F33B-4026-AAE9-207E16932A6F</string>
-		<key>UID</key>
-		<string>B7E0E6A9-B857-4443-876A-DF90D29C080E</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>Normal</string>
-		<key>CreationDate</key>
 		<real>493839659.76668698</real>
 		<key>Macros</key>
 		<array>
@@ -7910,7 +7833,7 @@ mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.groups
 track = tracks.byName(vo.voCursor.textUnderCursor())
 roleDescription = ObjectSpecifier().roleDescription
-button = track.buttons.whose({_match:[roleDescription,"Level Meter"]})
+button = track.buttons.whose({_match:[roleDescription,"Level Meter"]})[0]
 meter = ""+button.value()
 if (meter == "") vo.output("No Signal")
 else vo.output (meter)
@@ -7967,7 +7890,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>493739047.38486099</real>
 				<key>ModificationDate</key>
-				<real>494235998.04677999</real>
+				<real>494441890.95103198</real>
 				<key>Name</key>
 				<string>Speak/Reset Level Meter</string>
 				<key>Triggers</key>
@@ -8411,7 +8334,7 @@ if (runSingle) single()
 						<key>Path</key>
 						<string></string>
 						<key>Text</key>
-						<string>currentCommand = "e"
+						<string>currentCommand = "g"
 
 function single() {
 vo = Application("VoiceOver")
@@ -8423,6 +8346,7 @@ track = mix.groups.byName(vo.voCursor.textUnderCursor())
 button = track.buttons.whose({name:{_beginsWith:"Group ID indicator"}})[0]
 value = button.name()
 value = value.replace("Group ID indicator/pop-up", "")
+if (value == "") vo.output("No Group")
 vo.output(value)
 }
 
@@ -8469,7 +8393,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>493851817.94585598</real>
 				<key>ModificationDate</key>
-				<real>494280830.13299</real>
+				<real>494443311.92530799</real>
 				<key>Name</key>
 				<string>Speak/Select Group</string>
 				<key>Triggers</key>
