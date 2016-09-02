@@ -4431,8 +4431,10 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
-for (t=0; t&lt;tracks.length; t++) {
 select = ObjectSpecifier().uiElements[1].buttons[0].name
+json = tracks.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
+json = (JSON.parse(JSON.stringify(json)))
+for (j in json) {
 tracks.whose({_match:[select, {_contains:"Selected"}]}).uiElements[1].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
@@ -4475,7 +4477,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>494467948.83845401</real>
+				<real>494518233.76712799</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks, Deselect All Tracks</string>
 				<key>Triggers</key>
