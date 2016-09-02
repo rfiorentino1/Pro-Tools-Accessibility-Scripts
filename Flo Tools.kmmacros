@@ -2384,7 +2384,7 @@ y = y+h/2
 if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
-vo.output("Command Click at "+x+", "+y)
+vo.output("Command Click")
 } else {
 vo.output("Object is outside window, "+window.name()+".")
 x=-1
@@ -2437,7 +2437,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431551.48258799</real>
 				<key>ModificationDate</key>
-				<real>494535395.78635001</real>
+				<real>494544769.40151</real>
 				<key>Name</key>
 				<string>Command-Click</string>
 				<key>Triggers</key>
@@ -2525,7 +2525,7 @@ y = y+h/2
 if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
-vo.output("Command Option Click at "+x+", "+y)
+vo.output("Command Option Click")
 } else {
 vo.output("Object is outside window, "+window.name()+".")
 x=-1
@@ -2578,7 +2578,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431658.71946698</real>
 				<key>ModificationDate</key>
-				<real>494535358.04872203</real>
+				<real>494544751.59354001</real>
 				<key>Name</key>
 				<string>Command+Option-Click</string>
 				<key>Triggers</key>
@@ -2666,7 +2666,7 @@ y = y+h/2
 if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
-vo.output("Control Click at "+x+", "+y)
+vo.output("Control Click")
 } else {
 vo.output("Object is outside window, "+window.name()+".")
 x=-1
@@ -2719,7 +2719,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431491.72162199</real>
 				<key>ModificationDate</key>
-				<real>494535423.66763198</real>
+				<real>494544801.929259</real>
 				<key>Name</key>
 				<string>Control-Click</string>
 				<key>Triggers</key>
@@ -3087,7 +3087,7 @@ y = y+h/2
 if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
-vo.output("Option Click at "+x+", "+y)
+vo.output("Option Click")
 } else {
 vo.output("Object is outside window, "+window.name()+".")
 x=-1
@@ -3140,7 +3140,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>482163083.14183003</real>
 				<key>ModificationDate</key>
-				<real>494535463.50148398</real>
+				<real>494544836.35313702</real>
 				<key>Name</key>
 				<string>Option-Click</string>
 				<key>Triggers</key>
@@ -3228,7 +3228,7 @@ y = y+h/2
 if (x&gt;tlx&amp;x&lt;brx&amp;y&gt;tly&amp;y&lt;bry) {
 kme.setvariable("x", {to:""+x})
 kme.setvariable("y", {to:""+y})
-vo.output("Option Shift Click at "+x+", "+y)
+vo.output("Option Shift Click")
 } else {
 vo.output("Object is outside window, "+window.name()+".")
 x=-1
@@ -3281,7 +3281,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431421.92528403</real>
 				<key>ModificationDate</key>
-				<real>494535493.118586</real>
+				<real>494544856.993119</real>
 				<key>Name</key>
 				<string>option+Shift-Click</string>
 				<key>Triggers</key>
