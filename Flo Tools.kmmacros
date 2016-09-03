@@ -2599,7 +2599,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431551.48258799</real>
 				<key>ModificationDate</key>
-				<real>494544769.40151</real>
+				<real>494623292.99214602</real>
 				<key>Name</key>
 				<string>Command-Click</string>
 				<key>Triggers</key>
@@ -2608,11 +2608,11 @@ kme.setvariable("y", {to:""+y})
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>7</integer>
+						<integer>50</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>4352</integer>
+						<integer>256</integer>
 					</dict>
 				</array>
 				<key>UID</key>
@@ -2740,7 +2740,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431658.71946698</real>
 				<key>ModificationDate</key>
-				<real>494544751.59354001</real>
+				<real>494623305.45608002</real>
 				<key>Name</key>
 				<string>Command+Option-Click</string>
 				<key>Triggers</key>
@@ -2749,7 +2749,7 @@ kme.setvariable("y", {to:""+y})
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>7</integer>
+						<integer>50</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -2881,7 +2881,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431491.72162199</real>
 				<key>ModificationDate</key>
-				<real>494544801.929259</real>
+				<real>494623312.71227401</real>
 				<key>Name</key>
 				<string>Control-Click</string>
 				<key>Triggers</key>
@@ -2890,7 +2890,7 @@ kme.setvariable("y", {to:""+y})
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>7</integer>
+						<integer>50</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -3464,7 +3464,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>482163083.14183003</real>
 				<key>ModificationDate</key>
-				<real>494622431.11682498</real>
+				<real>494623327.06407899</real>
 				<key>Name</key>
 				<string>Option-Click</string>
 				<key>Triggers</key>
@@ -3473,7 +3473,7 @@ kme.setvariable("y", {to:""+y})
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>7</integer>
+						<integer>50</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -3605,7 +3605,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431421.92528403</real>
 				<key>ModificationDate</key>
-				<real>494544856.993119</real>
+				<real>494623334.36007297</real>
 				<key>Name</key>
 				<string>option+Shift-Click</string>
 				<key>Triggers</key>
@@ -3614,7 +3614,7 @@ kme.setvariable("y", {to:""+y})
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>7</integer>
+						<integer>50</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
