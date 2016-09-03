@@ -34,7 +34,10 @@ If successful, Keyboard Maestro should announce, "Successfully imported macros."
 
 For the scripts to run correctly, open Keyboard Maestro Preferences, and under the general tab, check the checkbox that says "start Keyboard Maestro Engine at log-in."
 
-##Note:
+##Important Notes about Keyboard Maestro:
+
+Keyboard Maestro contains some default macro groups that conflict with common Mac OS keyboard shortcuts. To disable these, go to the switcher group, and clipboard group, and disable them. This can be done by selecting the group, then selecting the disable group button.
+
 Keyboard Maestro is limited by a 30-day trial period. After this time, you will need to purchase a one-time license to continue using the program, and subsequently, Flo Tools.
 
 
@@ -134,12 +137,23 @@ This should move you inside the edit screen of the macro. VO right arrow, and yo
 
 To change it, simply type your new desired shortcut and then stop interacting with the edit area. Be careful not to press command tab here, as this will assign it self as a new shortcut.
 
+####Updating or reinstalling Flo Tools:
+
+When there is an update to Flo Tools, or if you simply want to reinstall it, both macro groups in Keyboard Maestro must be deleted. This can be done by doing the following:
+
+1. Open Keyboard Maestro and go to the Flo Tools Macro Group.
+2. Press VO space on it, then shift right arrow, to select both the Flo Tools, and Flo Tools inspector groups simultaneously.
+3. Stop interacting with the groups scroll area, and VO right arrow to "delete macro group." VO space to confirm deletion. Note that this cannot be undone once you have pressed delete.
+4. Before opening the macro file again to reinstall Flo Tools, make sure the macro groups are removed from the groups scroll area. If so, the above process was completed successfully.
+
+####Known Issues
+
+* Items marked as "Beta" may not function as expected, and should not be used regularly until they are no longer in the beta stage.
+* Checking the arm state of tracks does not report consistently. This is due to the way that Pro Tools indicates whether a track is record enabled. To work around this, check the arm state multiple times.
+
 
 ####Reporting Issues:
 
 GitHub provides a convenient and reliable way to track and resolve issues. Please click [here](https://github.com/rfiorentino1/Flo-Tools/issues), and search for your issue. If you don't find an open issue relating to your problem with Flo Tools, you can create a new one by clicking on "new issue" and filling out the required fields.
 
-
-####Known Issues
-
-* Checking the arm state of tracks does not report consistently. This is due to the way that Pro Tools indicates whether a track is record enabled. To work around this, check the arm state multiple times.
+Before reporting an issue, please check that the item being queried by Flo Tools is visible on the screen if Flo Tools is not functioning as expected. For example, if command 1 is pressed to report insert A of a track, and nothing is spoken, make sure that inserts a through e are checked in the view menu before reporting this as a Flo Tools issue.
