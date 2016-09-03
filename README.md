@@ -5,7 +5,7 @@ This document is divided into headings for easier screen reader navigation. Read
 
 #Acknowledgements:
 
-Flo Tools was first developed as a concept by Chi Kim and Rocco Fiorentino, in the Assistive Music Technology Lab at Berklee College of Music. After realizing the potential of the project, Slau Halatyn joined the team, and the group worked together to continue developing the scripts outside of the classroom. Many thanks to Rocco Fiorentino for his contribution to writing scripts and documentation. And many thanks to Slau Halatyn, who beta tested Flo Tools and gave invaluable feedback with his expert knowledge in Pro Tools. We’d also like to thank Chi Kim for his time, effort, and creative scripting abilities to make this project a success. We sincerely hope Flo Tools will enhance the work flow of Pro Tools users with visual impairments!
+Flo Tools was first developed as a concept by Chi Kim and Rocco Fiorentino, in the Assistive Music Technology Lab at Berklee College of Music. After the initial project at Berklee was completed, Slau Halatyn joined the team, and the group worked together to continue developing the scripts outside of the classroom. Many thanks to Chi Kim for his countless hours of creative scripting, to Rocco Fiorentino for his scripting contributions and providing documentation. And to Slau Halatyn, for his invaluable feedback and expert knowledge in Pro Tools. We sincerely hope Flo Tools will enhance the work flow of Pro Tools users with visual impairments!
 
 #Note:
 
@@ -74,18 +74,18 @@ Where two actions are listed, double-tapping the key will perform the second act
 - Speak Record Safe Tracks: Command+Option+Shift+r
 - Speak Solo Safe Tracks: Command+Option+Shift+s
 - Speak Clipped Tracks: Option+Shift+c
-- Control-Click: Control+x
-- Option-Click: Option+x
-- Option+Shift-Click: Option+Shift+x
-- Command-Click: Command+Control+x
-- Command+Option-Click: Command+Option+x
-
-Note: For click simulation to work properly, the desired track must be visible. Scroll to the track if necessary by pressing VO f and typing the track number.
+- Control-Click: Control+` (accent)
+- Control+Option-Click: Control+Option+` (accent)
+- Control+Option+Shift-Click: Control+Option+Shift+` (accent)
+- Option-Click: Option+` (accent)
+- Option+Shift-Click: Option+Shift+` (accent)
+- Command-Click: Command+Control+` (accent)
+- Command+Option-Click: Command+Option+` (accent)
 
 
 ###Flo Tools Inspector:
 
-The following commands apply to the current track that VoiceOver is focused on. This means the track name must be under the VoiceOver cursor, and the user should not be interacted with anything inside the track.
+The following commands apply to the track on which VoiceOver is currently focused . This means the track must be under the VoiceOver cursor, and the user should not be interacting with anything inside the track.
 
 Note: The inspector must be disabled to use first-letter navigation in pop-up menus in Pro Tools.
 
