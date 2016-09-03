@@ -3226,7 +3226,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493686520.776407</real>
 				<key>ModificationDate</key>
-				<real>494467445.24865401</real>
+				<real>494619292.13863403</real>
 				<key>Name</key>
 				<string>Hide All Tracks</string>
 				<key>Triggers</key>
@@ -3323,7 +3323,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493687207.84850001</real>
 				<key>ModificationDate</key>
-				<real>494467573.04808098</real>
+				<real>494619214.05105197</real>
 				<key>Name</key>
 				<string>Hide Selected Tracks</string>
 				<key>Triggers</key>
@@ -3464,7 +3464,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>482163083.14183003</real>
 				<key>ModificationDate</key>
-				<real>494544836.35313702</real>
+				<real>494622431.11682498</real>
 				<key>Name</key>
 				<string>Option-Click</string>
 				<key>Triggers</key>
@@ -9917,7 +9917,7 @@ vo.output("Zoomed "+window.name())
 				<key>CreationDate</key>
 				<real>494294855.25544697</real>
 				<key>ModificationDate</key>
-				<real>494536179.733513</real>
+				<real>494622452.67623001</real>
 				<key>Name</key>
 				<string>Zoom/Maximize Window</string>
 				<key>Triggers</key>
@@ -9930,7 +9930,7 @@ vo.output("Zoomed "+window.name())
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>6400</integer>
+						<integer>2816</integer>
 					</dict>
 				</array>
 				<key>UID</key>
