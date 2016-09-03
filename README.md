@@ -2,9 +2,16 @@
 #Welcome!
 Welcome to Flo Tools! This product was developed to enhance the usability and improve workflow for VoiceOver users of Pro Tools.
 This document is divided into headings for easier screen reader navigation. Read below to get started.
+
+#Acknowledgements:
+
+Flo Tools was first developed as a concept by Chi Kim and Rocco Fiorentino, in the Assistive Music Technology Lab at Berklee College of Music. After realizing the potential of the project, Slau Halatyn joined the team, and the group worked together to continue developing the scripts outside of the classroom. Many thanks to Rocco Fiorentino for his contribution to writing scripts and documentation. And many thanks to Slau Halatyn, who beta tested Flo Tools and gave invaluable feedback with his expert knowledge in Pro Tools. We’d also like to thank Chi Kim for his time, effort, and creative scripting abilities to make this project a success. We sincerely hope Flo Tools will enhance the work flow of Pro Tools users with visual impairments!
+
 #Note:
 
-The downloaded zip file, referenced in this read me, will automatically decompress itself into a folder on Mac OS. Please refer to this downloaded folder, called "Flo Tools Master", when reading this document.
+The  zip file referenced in this read me will automatically decompress itself into a folder on Mac OS. Please refer to this downloaded folder, called "Flo Tools Master", when reading this document.
+
+You can download the zip file directly from [here](https://github.com/rfiorentino1/Flo-Tools/archive/master.zip)
 
 #System Requirements:
 
@@ -41,11 +48,11 @@ The second is [this sound](file:///System/Library/Sounds/Tink.aiff), which tells
 
 ###Commands:
 
-Flo Tools has two groups of commands. The first, called "Flo Tools Assistant", is always active, and applies to the entire session. The second group, called "Flo Tools Inspector", and can be toggled on and off. The inspector only applies to an individual track.
+Flo Tools has two groups of commands. The first, called "Flo Tools", is always active, and applies to the entire session. The second group, called "Flo Tools Inspector", is active by default, but can be toggled on and off. The inspector only applies to an individual track.
 
 Below is a list of Flo Tools commands, and their associated functions, separated by their respective groups.
 
-###Flo Tools Assistant:
+###Flo Tools:
 
 Where two actions are listed, double-tapping the key will perform the second action.
 
@@ -80,7 +87,7 @@ Note: For click simulation to work properly, the desired track must be visible. 
 
 The following commands apply to the current track that VoiceOver is focused on. This means the track name must be under the VoiceOver cursor, and the user should not be interacted with anything inside the track.
 
-Note: The inspector must be disabled to type anywhere in Pro Tools.
+Note: The inspector must be disabled to use first-letter navigation in pop-up menus in Pro Tools.
 
 Where 2 actions are listed, double tapping the key will perform the second action.
 
@@ -130,7 +137,7 @@ To change it, simply type your new desired shortcut and then stop interacting wi
 
 ####Reporting Issues:
 
-GitHub provides a convenient and reliable way to track and resolve issues. Please click [here](https://github.com/rfiorentino1/Pro-Tools-Accessibility-Scripts/issues), and search for your issue. If you don't find an open issue relating to your problem with Flo Tools, you can create a new one by clicking on "new issue" and filling out the required fields.
+GitHub provides a convenient and reliable way to track and resolve issues. Please click [here](https://github.com/rfiorentino1/Flo-Tools/issues), and search for your issue. If you don't find an open issue relating to your problem with Flo Tools, you can create a new one by clicking on "new issue" and filling out the required fields.
 
 
 ####Known Issues
