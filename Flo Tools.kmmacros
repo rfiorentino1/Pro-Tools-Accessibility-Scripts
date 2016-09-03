@@ -33,7 +33,9 @@
 						<string></string>
 						<key>Text</key>
 						<string>vo = Application("VoiceOver")
-vo.output("Inspector On")</string>
+vo.output("Inspector On")
+kme = Application("Keyboard Maestro Engine")
+kme.setvariable("ftAutomaticInspector", {to:"1"})</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -47,7 +49,7 @@ vo.output("Inspector On")</string>
 				<key>CreationDate</key>
 				<real>494579480.78613901</real>
 				<key>ModificationDate</key>
-				<real>494579517.37766701</real>
+				<real>494617044.653373</real>
 				<key>Name</key>
 				<string>Activate INspector</string>
 				<key>Triggers</key>
@@ -107,27 +109,25 @@ vo.output("Inspector On")</string>
 							<array>
 								<dict>
 									<key>ConditionType</key>
-									<string>FrontWindow</string>
-									<key>FrontWindowConditionType</key>
-									<string>TitleContains</string>
-									<key>FrontWindowTitle</key>
-									<string>Mix:</string>
-									<key>IsFrontApplication</key>
-									<true/>
+									<string>Variable</string>
+									<key>Variable</key>
+									<string>ftAutomaticInspector</string>
+									<key>VariableConditionType</key>
+									<string>Matches</string>
+									<key>VariableValue</key>
+									<string>1</string>
 								</dict>
 								<dict>
 									<key>ConditionType</key>
-									<string>FrontWindow</string>
-									<key>FrontWindowConditionType</key>
-									<string>TitleContains</string>
-									<key>FrontWindowTitle</key>
-									<string>Edit:</string>
-									<key>IsFrontApplication</key>
-									<true/>
+									<string>Macro</string>
+									<key>MacroConditionType</key>
+									<string>IsInactive</string>
+									<key>MacroUID</key>
+									<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 								</dict>
 							</array>
 							<key>ConditionListMatch</key>
-							<string>Any</string>
+							<string>All</string>
 						</dict>
 						<key>ElseActions</key>
 						<array/>
@@ -136,34 +136,73 @@ vo.output("Inspector On")</string>
 						<key>ThenActions</key>
 						<array>
 							<dict>
-								<key>DisplayToggle</key>
-								<false/>
+								<key>Conditions</key>
+								<dict>
+									<key>ConditionList</key>
+									<array>
+										<dict>
+											<key>ConditionType</key>
+											<string>FrontWindow</string>
+											<key>FrontWindowConditionType</key>
+											<string>TitleContains</string>
+											<key>FrontWindowTitle</key>
+											<string>Mix:</string>
+											<key>IsFrontApplication</key>
+											<true/>
+										</dict>
+										<dict>
+											<key>ConditionType</key>
+											<string>FrontWindow</string>
+											<key>FrontWindowConditionType</key>
+											<string>TitleContains</string>
+											<key>FrontWindowTitle</key>
+											<string>Edit:</string>
+											<key>IsFrontApplication</key>
+											<true/>
+										</dict>
+									</array>
+									<key>ConditionListMatch</key>
+									<string>Any</string>
+								</dict>
+								<key>ElseActions</key>
+								<array/>
 								<key>MacroActionType</key>
-								<string>MacroGroupToggle</string>
-								<key>MacroGroupUID</key>
-								<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-								<key>ToggleMode</key>
-								<string>Activate</string>
-							</dict>
-							<dict>
-								<key>DisplayKind</key>
-								<string>None</string>
-								<key>IncludeStdErr</key>
-								<true/>
-								<key>MacroActionType</key>
-								<string>ExecuteJavaScriptForAutomation</string>
-								<key>Path</key>
-								<string></string>
-								<key>Text</key>
-								<string>vo = Application("VoiceOver")
+								<string>IfThenElse</string>
+								<key>ThenActions</key>
+								<array>
+									<dict>
+										<key>DisplayToggle</key>
+										<false/>
+										<key>MacroActionType</key>
+										<string>MacroGroupToggle</string>
+										<key>MacroGroupUID</key>
+										<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+										<key>ToggleMode</key>
+										<string>Activate</string>
+									</dict>
+									<dict>
+										<key>DisplayKind</key>
+										<string>None</string>
+										<key>IncludeStdErr</key>
+										<true/>
+										<key>MacroActionType</key>
+										<string>ExecuteJavaScriptForAutomation</string>
+										<key>Path</key>
+										<string></string>
+										<key>Text</key>
+										<string>vo = Application("VoiceOver")
 vo.output("Inspector On")</string>
+										<key>TimeOutAbortsMacro</key>
+										<true/>
+										<key>TrimResults</key>
+										<true/>
+										<key>TrimResultsNew</key>
+										<true/>
+										<key>UseText</key>
+										<true/>
+									</dict>
+								</array>
 								<key>TimeOutAbortsMacro</key>
-								<true/>
-								<key>TrimResults</key>
-								<true/>
-								<key>TrimResultsNew</key>
-								<true/>
-								<key>UseText</key>
 								<true/>
 							</dict>
 						</array>
@@ -174,7 +213,7 @@ vo.output("Inspector On")</string>
 				<key>CreationDate</key>
 				<real>493844446.23777997</real>
 				<key>ModificationDate</key>
-				<real>494579356.24218398</real>
+				<real>494617150.88069099</real>
 				<key>Name</key>
 				<string>Activate INspector When Window Changes</string>
 				<key>Triggers</key>
@@ -2916,7 +2955,9 @@ kme.setvariable("y", {to:""+y})
 						<string></string>
 						<key>Text</key>
 						<string>vo = Application("VoiceOver")
-vo.output("Inspector Off")</string>
+vo.output("Inspector Off")
+kme = Application("Keyboard Maestro Engine")
+kme.setvariable("ftAutomaticInspector", {to:"0"})</string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
 						<key>TrimResults</key>
@@ -2930,7 +2971,7 @@ vo.output("Inspector Off")</string>
 				<key>CreationDate</key>
 				<real>494579416.618402</real>
 				<key>ModificationDate</key>
-				<real>494579470.249547</real>
+				<real>494616526.48767799</real>
 				<key>Name</key>
 				<string>Deactivate INspector</string>
 				<key>Triggers</key>
@@ -2990,23 +3031,21 @@ vo.output("Inspector Off")</string>
 							<array>
 								<dict>
 									<key>ConditionType</key>
-									<string>FrontWindow</string>
-									<key>FrontWindowConditionType</key>
-									<string>TitleDoesNotContain</string>
-									<key>FrontWindowTitle</key>
-									<string>Mix:</string>
-									<key>IsFrontApplication</key>
-									<true/>
+									<string>Variable</string>
+									<key>Variable</key>
+									<string>ftAutomaticInspector</string>
+									<key>VariableConditionType</key>
+									<string>Matches</string>
+									<key>VariableValue</key>
+									<string>1</string>
 								</dict>
 								<dict>
 									<key>ConditionType</key>
-									<string>FrontWindow</string>
-									<key>FrontWindowConditionType</key>
-									<string>TitleDoesNotContain</string>
-									<key>FrontWindowTitle</key>
-									<string>Edit:</string>
-									<key>IsFrontApplication</key>
-									<true/>
+									<string>Macro</string>
+									<key>MacroConditionType</key>
+									<string>IsActive</string>
+									<key>MacroUID</key>
+									<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 								</dict>
 							</array>
 							<key>ConditionListMatch</key>
@@ -3019,34 +3058,73 @@ vo.output("Inspector Off")</string>
 						<key>ThenActions</key>
 						<array>
 							<dict>
-								<key>DisplayToggle</key>
-								<false/>
+								<key>Conditions</key>
+								<dict>
+									<key>ConditionList</key>
+									<array>
+										<dict>
+											<key>ConditionType</key>
+											<string>FrontWindow</string>
+											<key>FrontWindowConditionType</key>
+											<string>TitleDoesNotContain</string>
+											<key>FrontWindowTitle</key>
+											<string>Mix:</string>
+											<key>IsFrontApplication</key>
+											<true/>
+										</dict>
+										<dict>
+											<key>ConditionType</key>
+											<string>FrontWindow</string>
+											<key>FrontWindowConditionType</key>
+											<string>TitleDoesNotContain</string>
+											<key>FrontWindowTitle</key>
+											<string>Edit:</string>
+											<key>IsFrontApplication</key>
+											<true/>
+										</dict>
+									</array>
+									<key>ConditionListMatch</key>
+									<string>All</string>
+								</dict>
+								<key>ElseActions</key>
+								<array/>
 								<key>MacroActionType</key>
-								<string>MacroGroupToggle</string>
-								<key>MacroGroupUID</key>
-								<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
-								<key>ToggleMode</key>
-								<string>Deactivate</string>
-							</dict>
-							<dict>
-								<key>DisplayKind</key>
-								<string>None</string>
-								<key>IncludeStdErr</key>
-								<true/>
-								<key>MacroActionType</key>
-								<string>ExecuteJavaScriptForAutomation</string>
-								<key>Path</key>
-								<string></string>
-								<key>Text</key>
-								<string>vo = Application("VoiceOver")
+								<string>IfThenElse</string>
+								<key>ThenActions</key>
+								<array>
+									<dict>
+										<key>DisplayToggle</key>
+										<false/>
+										<key>MacroActionType</key>
+										<string>MacroGroupToggle</string>
+										<key>MacroGroupUID</key>
+										<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
+										<key>ToggleMode</key>
+										<string>Deactivate</string>
+									</dict>
+									<dict>
+										<key>DisplayKind</key>
+										<string>None</string>
+										<key>IncludeStdErr</key>
+										<true/>
+										<key>MacroActionType</key>
+										<string>ExecuteJavaScriptForAutomation</string>
+										<key>Path</key>
+										<string></string>
+										<key>Text</key>
+										<string>vo = Application("VoiceOver")
 vo.output("Inspector Off")</string>
+										<key>TimeOutAbortsMacro</key>
+										<true/>
+										<key>TrimResults</key>
+										<true/>
+										<key>TrimResultsNew</key>
+										<true/>
+										<key>UseText</key>
+										<true/>
+									</dict>
+								</array>
 								<key>TimeOutAbortsMacro</key>
-								<true/>
-								<key>TrimResults</key>
-								<true/>
-								<key>TrimResultsNew</key>
-								<true/>
-								<key>UseText</key>
 								<true/>
 							</dict>
 						</array>
@@ -3057,7 +3135,7 @@ vo.output("Inspector Off")</string>
 				<key>CreationDate</key>
 				<real>493858646.54649901</real>
 				<key>ModificationDate</key>
-				<real>494579405.682697</real>
+				<real>494617330.28379798</real>
 				<key>Name</key>
 				<string>Deactivate INspector When Window Changes</string>
 				<key>Triggers</key>
