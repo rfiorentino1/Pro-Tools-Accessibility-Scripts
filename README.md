@@ -1,28 +1,29 @@
-# Flo Tools
+#Flo Tools
 #Welcome!
-Welcome to Flo Tools! This product was developed to enhance the usability and improve workflow for VoiceOver users of Pro Tools.
+Welcome to Flo Tools! This product was developed to enhance the usability and improve workflow for VoiceOver users of Pro Tools.  
 This document is divided into headings for easier screen reader navigation. Read below to get started.
 
 #Acknowledgements:
 
 Flo Tools was first developed as a concept by Chi Kim and Rocco Fiorentino, in the Assistive Music Technology Lab at Berklee College of Music. After the initial project at Berklee was completed, Slau Halatyn joined the team, and the group worked together to continue developing the scripts outside of the classroom. Many thanks to Chi Kim for his countless hours of creative scripting, to Rocco Fiorentino for his scripting contributions and providing documentation. And to Slau Halatyn, for his invaluable feedback and expert knowledge in Pro Tools. We sincerely hope Flo Tools will enhance the work flow of Pro Tools users with visual impairments!
 
-#Note:
-
-The  zip file referenced in this read me will automatically decompress itself into a folder on Mac OS. Please refer to this downloaded folder, called "Flo Tools Master", when reading this document.
-
-You can download the zip file directly from [here](https://github.com/rfiorentino1/Flo-Tools/archive/master.zip)
-
-#Disclaimer:
+#Disclaimer and License:
 
 Support is only available through a volunteer based community.
 
-We invite anyone to contribute to this project. Please see license file for more details If you would like to modify the script.
+Flo Tools  
+Copyright (C) 2016 Chi Kim  
+Copyright (C) 2016 Rocco Fiorentino
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+Flow Tools is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Flo Tools is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the [GNU General Public License](http://www.gnu.org/licenses/) for more details.
 
+#Download:
+
+You can download the zip file directly from [here](https://github.com/rfiorentino1/Flo-Tools/archive/master.zip)
+
+The  zip file referenced in this read me will automatically decompress itself into a folder on Mac OS. Please refer to this downloaded folder, called "Flo Tools Master", when reading this document.
 
 #System Requirements:
 
