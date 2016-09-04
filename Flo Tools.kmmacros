@@ -3484,9 +3484,9 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
+showValues = tracks.uiElements[0].buttons[0].name()
 for (t in tracks) {
-button = tracks[t].uiElements[0].buttons[0]
-if (button.name().indexOf("Shown")==0) button.click()
+if (showValues[t].indexOf("Shown")==0) tracks[t].uiElements[0].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
@@ -3508,7 +3508,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493686520.776407</real>
 				<key>ModificationDate</key>
-				<real>494619292.13863403</real>
+				<real>494640223.93418401</real>
 				<key>Name</key>
 				<string>Hide All Tracks</string>
 				<key>Triggers</key>
@@ -3579,11 +3579,10 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
+showValues = tracks.uiElements[0].buttons[0].name()
+selectValues = tracks.uiElements[1].buttons[0].name()
 for (t in tracks) {
-button = tracks[t].uiElements[0].buttons[0]
-if (tracks[t].uiElements[1].buttons[0].name().indexOf("Selected")==0 &amp; button.name().indexOf("Shown")==0) {
-button.click()
-}
+if (selectValues[t].indexOf("Selected")==0 &amp; showValues[t].indexOf("Shown")==0) tracks[t].uiElements[0].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
@@ -3605,7 +3604,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493687207.84850001</real>
 				<key>ModificationDate</key>
-				<real>494619214.05105197</real>
+				<real>494639884.37576598</real>
 				<key>Name</key>
 				<string>Hide Selected Tracks</string>
 				<key>Triggers</key>
@@ -3958,9 +3957,9 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
+showValues = tracks.uiElements[0].buttons[0].name()
 for (t in tracks) {
-button = tracks[t].uiElements[0].buttons[0]
-if (button.name().indexOf("Hidden")==0) button.click()
+if (showValues[t].indexOf("Hidden")==0) tracks[t].uiElements[0].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
@@ -3982,7 +3981,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493686641.678491</real>
 				<key>ModificationDate</key>
-				<real>494467602.711923</real>
+				<real>494640426.45328099</real>
 				<key>Name</key>
 				<string>Show All Tracks</string>
 				<key>Triggers</key>
@@ -4053,15 +4052,11 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
+showValues = tracks.uiElements[0].buttons[0].name()
+selectValues = tracks.uiElements[1].buttons[0].name()
 for (t in tracks) {
-button = tracks[t].uiElements[0].buttons[0]
-show = button.name()
-selected = tracks[t].uiElements[1].buttons[0].name()
-if (selected.indexOf("Selected")==0 &amp; show.indexOf("Hidden")==0) {
-button.click()
-} else if (!selected.indexOf("Selected")==0 &amp; show.indexOf("Shown")==0) {
-button.click()
-}
+if (selectValues[t].indexOf("Selected")==0 &amp; showValues[t].indexOf("Hidden")==0) tracks[t].uiElements[0].buttons[0].click()
+else if (selectValues[t].indexOf("Selected")==-1 &amp; showValues[t].indexOf("Shown")==0) tracks[t].uiElements[0].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
@@ -4083,7 +4078,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>493687545.99967802</real>
 				<key>ModificationDate</key>
-				<real>494467619.22384298</real>
+				<real>494640814.80343002</real>
 				<key>Name</key>
 				<string>Show Only Selected Tracks</string>
 				<key>Triggers</key>
@@ -4913,7 +4908,6 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 select = ObjectSpecifier().uiElements[1].buttons[0].name
 tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t in tracks) {
 msg += tracks[t].replace(/^Selected(.*?  \w+) track$/,"$1")+", "
@@ -4934,11 +4928,9 @@ pt = sys.applicationProcesses.byName("Pro Tools")
 windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 tracks = mix.tables.byName("Track List").rows
-select = ObjectSpecifier().uiElements[1].buttons[0].name
-json = tracks.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
-json = (JSON.parse(JSON.stringify(json)))
-for (j in json) {
-tracks.whose({_match:[select, {_contains:"Selected"}]}).uiElements[1].buttons[0].click()
+selectValues = tracks.uiElements[1].buttons[0].name()
+for (t in tracks) {
+if (selectValues[t].indexOf("Selected")==0) tracks[t].uiElements[1].buttons[0].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
@@ -4980,7 +4972,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>494518233.76712799</real>
+				<real>494641363.129103</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks, Deselect All Tracks</string>
 				<key>Triggers</key>
