@@ -2464,18 +2464,13 @@ if (runSingle) single()
 						<string>vo = Application("VoiceOver")
 sys = Application("System Events")
 pt = sys.applicationProcesses.byName("Pro Tools")
-windows = pt.windows()
-msg = ""
+editFilter = {name:{_contains:"Edit:"}}
+mixFilter = {name:{_contains:"Mix:"}}
+windows = pt.windows.whose({_not:[mixFilter, editFilter]})()
+
 for (w in windows) {
-window = windows[w]
-name = window.name()
-if (name.indexOf("Mix: ")==0 | name.indexOf("Edit: ")==0) continue
-msg += name+", "
- window.buttons[0].click()
+windows = pt.windows.whose({_not:[mixFilter, editFilter]}).buttons[0].click()
 }
-if (msg=="") msg = "No windows to cloz."
-else msg = "Closed "+msg
-vo.output (msg)
 </string>
 						<key>TimeOutAbortsMacro</key>
 						<true/>
@@ -2490,7 +2485,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>479078801.99380499</real>
 				<key>ModificationDate</key>
-				<real>493937961.52389598</real>
+				<real>494718257.40881997</real>
 				<key>Name</key>
 				<string>Close All Floating Windows</string>
 				<key>Triggers</key>
