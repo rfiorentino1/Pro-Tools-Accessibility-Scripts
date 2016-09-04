@@ -1,7 +1,8 @@
 #Flo Tools
 #Welcome!
-Welcome to Flo Tools! This product was developed to enhance the usability and improve workflow for VoiceOver users of Pro Tools.  
-This document is divided into headings for easier screen reader navigation. Read below to get started.
+Welcome to Flo Tools! This open source product is a series of UI scripts for VoiceOver designed to enhance the accessibility of Pro Tools for blind and visually-impaired users   by streamlining and automating tasks to dramatically improve the efficiency  of workflows.
+
+This Read Me file is divided into headings for easier screen reader navigation. Read on to get started.
 
 #Acknowledgements:
 
