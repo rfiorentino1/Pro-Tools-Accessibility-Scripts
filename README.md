@@ -64,7 +64,7 @@ Where two actions are listed, double-tapping the key will perform the second act
 - Speak Selection Length: Command+f3
 - Speak main counter: Command+f4
 - Close All Floating Windows: Command+Option+w
-- Zoom/Maximize Window: Command+Option+Control+z (must be passed through)
+- Zoom/Maximize Window: Command+Option+Shift+z
 - Show All Tracks: Option+f1
 - Hide All Tracks: Option+f2
 - Show Only Selected Tracks: Option+Shift+f1
@@ -78,8 +78,8 @@ Where two actions are listed, double-tapping the key will perform the second act
 - Speak Solo Safe Tracks: Command+Option+Shift+s
 - Speak Clipped Tracks: Option+Shift+c
 - Control-Click: Control+` (accent)
-- Control+Option-Click: Control+Option+` (accent)
-- Control+Option+Shift-Click: Control+Option+Shift+` (accent)
+- Control+Option-Click: Control+Option+` (accent), must be passed through
+- Control+Option+Shift-Click: Control+Option+Shift+` (accent), must be passed through
 - Option-Click: Option+` (accent)
 - Option+Shift-Click: Option+Shift+` (accent)
 - Command-Click: Command+Control+` (accent)
