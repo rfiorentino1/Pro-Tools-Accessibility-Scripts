@@ -5,7 +5,7 @@ This document is divided into headings for easier screen reader navigation. Read
 
 #Acknowledgements:
 
-Flo Tools was first developed as a concept by Chi Kim and Rocco Fiorentino, in the Assistive Music Technology Lab at Berklee College of Music. After the initial project at Berklee was completed, Slau Halatyn joined the team, and the group worked together to continue developing the scripts outside of the classroom. Many thanks to Chi Kim for his countless hours of creative scripting, to Rocco Fiorentino for his scripting contributions and providing documentation. And to Slau Halatyn, for his invaluable feedback and expert knowledge in Pro Tools. We sincerely hope Flo Tools will enhance the work flow of Pro Tools users with visual impairments!
+Flo Tools was first developed as a concept by Chi Kim and Rocco Fiorentino, in the [Assistive Music Technology Lab](http://berklee.edu/amtlab) at Berklee College of Music. After the initial project at Berklee was completed, Slau Halatyn joined the team, and the group worked together to continue developing the scripts outside of the classroom. Many thanks to Chi Kim for his countless hours of creative scripting, to Rocco Fiorentino for his scripting contributions and providing documentation. And to Slau Halatyn, for his invaluable feedback and expert knowledge in Pro Tools. We sincerely hope Flo Tools will enhance the work flow of Pro Tools users with visual impairments!
 
 #Disclaimer and License:
 
