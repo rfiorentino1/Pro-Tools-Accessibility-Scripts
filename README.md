@@ -1,6 +1,6 @@
 #Flo Tools
 #Welcome!
-Welcome to Flo Tools! This open source product is a series of UI scripts for VoiceOver designed to enhance the accessibility of Pro Tools for blind and visually-impaired users   by streamlining and automating tasks to dramatically improve the efficiency  of workflows.
+Welcome to Flo Tools! This open source product is a series of UI scripts for VoiceOver designed to enhance the accessibility of Pro Tools for blind and visually-impaired users   by streamlining and automating tasks to dramatically improve the efficiency  of workflows.
 
 This Read Me file is divided into headings for easier screen reader navigation. Read on to get started.
 
@@ -84,7 +84,7 @@ Where two actions are listed, double-tapping the key will perform the second act
 - Hide Selected Tracks: Option+Shift+f2
 - Speak Selected Tracks, Deselect All Tracks: Option+Shift+t
 - Speak Input Monitor-Enabled Tracks, Disable Input Monitor On All Tracks: Option+Shift+k
-- Speak Record-Enabled Tracks, Disarm All Record Enabled Tracks: Option+Shift+r
+- Beta: Speak Record-Enabled Tracks, Disarm All Record Enabled Tracks: Option+Shift+r
 - Speak Soloed Tracks, Unsolo All Tracks: Option+Shift+s
 - Speak Muted Tracks, Unmute All Tracks: Option+Shift+m
 - Speak Record Safe Tracks: Command+Option+Shift+r
@@ -128,7 +128,7 @@ Where 2 actions are listed, double tapping the key will perform the second actio
 - Speak/Reset Peak Meter: p
 - Speak/Reset Gain Reduction Meter: g
 - Speak/Edit Comments: c
-- Beta: Track Options Menu: h
+- Track Options Menu: h
 - Speak/Select Playlist: \
 - Beta: Speak/Select Track View: w
 - Speak/Toggle Freeze Status: f
