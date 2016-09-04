@@ -32,9 +32,7 @@ You should have received a copy of the GNU General Public License along with thi
 						<string>A873DB58-32B1-4730-B0D4-9C89056CB5F7</string>
 						<key>ToggleMode</key>
 						<string>Activate</string>
-			
-
-		</dict>
+					</dict>
 					<dict>
 						<key>DisplayKind</key>
 						<string>None</string>
@@ -2212,7 +2210,7 @@ windows = pt.windows
 window = windows.whose({name:{_beginsWith:"Edit:"}})[0]
 track = window.groups.byName(vo.voCursor.textUnderCursor())
 button = track.popUpButtons.whose({title:{_contains:"Track View Selector"}})[0]
-value = button.name()
+value = button.value()
 vo.output(value)
 }
 
@@ -2259,7 +2257,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>494273438.39537001</real>
 				<key>ModificationDate</key>
-				<real>494536400.55936903</real>
+				<real>494668643.98823702</real>
 				<key>Name</key>
 				<string>Beta: Speak/Select Track View</string>
 				<key>Triggers</key>
@@ -2612,7 +2610,7 @@ kme.setvariable("y", {to:""+y})
 				<key>CreationDate</key>
 				<real>494431551.48258799</real>
 				<key>ModificationDate</key>
-				<real>494623292.99214602</real>
+				<real>494705499.36233598</real>
 				<key>Name</key>
 				<string>Command-Click</string>
 				<key>Triggers</key>
@@ -4163,18 +4161,17 @@ windows = pt.windows
 mix = windows.whose({name:{_beginsWith:"Mix:"}})[0]
 groupFilter = {name:{_beginsWith:"Group List"}}
 midiFilter = {name:{_endsWith:" - MIDI Track"}}
-tracks = mix.groups.whose({_not:[groupFilter, midiFilter]})
+values = mix.groups.whose({_not:[groupFilter, midiFilter]}).sliders["Peak"].attributes[2].value()
+tracks = mix.groups.whose({_not:[groupFilter, midiFilter]}).name()
 msg = ""
-for (t in tracks) {
-track = tracks[t]
-meter = tracks[t].sliders["Peak"].attributes[2].value()
-meter = meter.replace("minus ","-")
-if (meter&gt;=0) msg += track.name()+", "
+for (t in values) {
+if (values[t].replace("minus ","-")&gt;0) msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg=="") msg = "No tracks are clipped"
 else msg = "Clipped: "+msg
 vo.output(msg)
@@ -4192,7 +4189,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>493820126.83139598</real>
 				<key>ModificationDate</key>
-				<real>494467637.127891</real>
+				<real>494703681.57439601</real>
 				<key>Name</key>
 				<string>Speak Clipped Tracks</string>
 				<key>Triggers</key>
@@ -4267,15 +4264,15 @@ inputSpecifier = ObjectSpecifier().buttons["TrackInput Monitor"].value
 inputFilter = {_match:[inputSpecifier, "on"]}
 audioFilter = {name:{_contains:" - Audio Track"}}
 tracks = mix.groups.whose({_and:[audioFilter, inputFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t=0; t&lt;tracks.length; t++) {
-msg += tracks[t]+", "
+for (t in tracks) {
+msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
-kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
+kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg == "") msg = "No track has input monitor on"
 else msg = "Input on: "+msg
 vo.output(msg)
@@ -4291,8 +4288,7 @@ inputSpecifier = ObjectSpecifier().buttons["TrackInput Monitor"].value
 inputFilter = {_match:[inputSpecifier, "on"]}
 audioFilter = {name:{_contains:" - Audio Track"}}
 tracks = mix.groups.whose({_and:[audioFilter, inputFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
-for (t=0; t&lt;tracks.length; t++) {
+for (t in tracks) {
 mix.groups.byName(tracks[t]).buttons["TrackInput Monitor"].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
@@ -4337,7 +4333,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>493846509.576334</real>
 				<key>ModificationDate</key>
-				<real>494467717.88029099</real>
+				<real>494705762.35581899</real>
 				<key>Name</key>
 				<string>Speak Input Monitor-Enabled Tracks, Disable Input Monitor On All Tracks</string>
 				<key>Triggers</key>
@@ -4517,16 +4513,15 @@ muteFilter = {_match:[muteSpecifier,""]}
 soloFilter = {_match:[muteSpecifier,{_contains:"solo"}]}
 inactiveFilter = {_match:[muteSpecifier,{_contains:"inactive"}]}
 tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter, inactiveFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t=0; t&lt;tracks.length; t++) {
-track = tracks[t]
-msg += track+", "
+for (t in tracks) {
+msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg=="") msg = "No tracks are muted."
 else msg = "Muted: "+msg
 vo.output(msg)
@@ -4545,7 +4540,6 @@ muteFilter = {_match:[muteSpecifier,""]}
 soloFilter = {_match:[muteSpecifier,{_contains:"solo"}]}
 inactiveFilter = {_match:[muteSpecifier,{_contains:"inactive"}]}
 tracks = mix.groups.whose({_not:[groupFilter, masterFilter, muteFilter, soloFilter, inactiveFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
 mix.groups.byName(tracks[t]).buttons["Mute"].click()
 if (new Date().getTime()-start &gt; 1000) {
@@ -4589,7 +4583,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494467806.84715599</real>
+				<real>494704635.03991002</real>
 				<key>Name</key>
 				<string>Speak Muted Tracks, Unmute All Tracks</string>
 				<key>Triggers</key>
@@ -4666,17 +4660,16 @@ armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 armFilter = {_match:[armSpecifier,""]}
 safeFilter = {_match:[armSpecifier,{_contains:"safe"}]}
 inactiveFilter = {_match:[armSpecifier,{_contains:"inactive"}]}
-
 tracks = mix.groups.whose({_and:[{_not:[groupFilter, auxFilter, masterFilter, armFilter, inactiveFilter]}, safeFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t=0; t&lt;tracks.length; t++) {
-msg += tracks[t]+", "
+for (t in tracks) {
+msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg=="") msg = msg+"No t	racks are disarmed safe."
 else msg = "Disarmed safe: "+msg
 vo.output (msg)
@@ -4694,7 +4687,7 @@ vo.output (msg)
 				<key>CreationDate</key>
 				<real>494360196.80965501</real>
 				<key>ModificationDate</key>
-				<real>494384908.56416303</real>
+				<real>494704789.96317101</real>
 				<key>Name</key>
 				<string>Speak Record Safe Tracks</string>
 				<key>Triggers</key>
@@ -4772,17 +4765,16 @@ armSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 armFilter = {_match:[armSpecifier,""]}
 safeFilter = {_match:[armSpecifier,{_contains:"safe"}]}
 inactiveFilter = {_match:[armSpecifier,{_contains:"inactive"}]}
-
 tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter, inactiveFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t=0; t&lt;tracks.length; t++) {
-msg += tracks[t]+", "
+for (t in tracks) {
+msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg=="") msg = msg+"No tracks are armed."
 else msg = "Armed: "+msg
 vo.output (msg)
@@ -4803,9 +4795,8 @@ safeSpecifier = ObjectSpecifier().buttons["Track Record Enable"].value
 safeFilter = {_match:[safeSpecifier,{_contains:"safe"}]}
 inactiveFilter = {_match:[armSpecifier,{_contains:"inactive"}]}
 tracks = mix.groups.whose({_not:[groupFilter, auxFilter, masterFilter, armFilter, safeFilter, inactiveFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
-for (t=0; t&lt;tracks.length; t++) {
+for (t in tracks) {
 mix.groups.byName(tracks[t]).buttons["Track Record Enable"].click()
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
@@ -4848,7 +4839,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494535980.90071398</real>
+				<real>494704980.89613098</real>
 				<key>Name</key>
 				<string>Speak Record-Enabled Tracks, Disarm All Record-Enabled Tracks</string>
 				<key>Triggers</key>
@@ -4923,12 +4914,13 @@ select = ObjectSpecifier().uiElements[1].buttons[0].name
 tracks = mix.tables.byName("Track List").rows.whose({_match:[select,{_contains:"Selected"}]}).uiElements[1].buttons[0].name()
 msg = ""
 for (t in tracks) {
-msg += tracks[t].replace(/^Selected(.*?  \w+) track$/,"$1")+", "
+msg += tracks[t].replace(/^Selected /,"")+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ track\. /g, ". ")
 if (msg=="") msg = "No tracks are currently selected."
 else msg = "Selected: "+msg
 vo.output (msg)
@@ -4985,7 +4977,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>482444177.87291098</real>
 				<key>ModificationDate</key>
-				<real>494641363.129103</real>
+				<real>494705155.17057699</real>
 				<key>Name</key>
 				<string>Speak Selected Tracks, Deselect All Tracks</string>
 				<key>Triggers</key>
@@ -5372,15 +5364,15 @@ soloFilter = {_match:[soloSpecifier,""]}
 safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
 inactiveFilter = {_match:[soloSpecifier,{_contains:"inactive"}]}
 tracks = mix.groups.whose({_and:[{_not:[groupFilter, masterFilter, soloFilter, inactiveFilter]}, safeFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t in tracks) {
-msg += tracks[t]+", "
+msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Tink.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg=="") msg = msg+"No tracks are safe soloed."
 else msg = "Safe Soloed: "+msg
 vo.output(msg)
@@ -5398,7 +5390,7 @@ vo.output(msg)
 				<key>CreationDate</key>
 				<real>494359188.31976402</real>
 				<key>ModificationDate</key>
-				<real>494536028.40842801</real>
+				<real>494705258.46666199</real>
 				<key>Name</key>
 				<string>Speak Solo Safe Tracks</string>
 				<key>Triggers</key>
@@ -5476,15 +5468,15 @@ soloFilter = {_match:[soloSpecifier,""]}
 safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
 inactiveFilter = {_match:[soloSpecifier,{_contains:"inactive"}]}
 tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter, inactiveFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 msg = ""
 for (t in tracks) {
-msg += tracks[t]+", "
+msg += tracks[t]+". "
 if (new Date().getTime()-start &gt; 1000) {
 kme.playSound(Path("/System/Library/Sounds/Pop.aiff"))
 start = new Date().getTime()
 }
 }
+msg = msg.replace(/ Track\. /g, ". ")
 if (msg=="") msg = msg+"No tracks are soloed."
 else msg = "Soloed: "+msg
 vo.output(msg)
@@ -5503,7 +5495,6 @@ soloFilter = {_match:[soloSpecifier,""]}
 safeFilter = {_match:[soloSpecifier,{_contains:"safe"}]}
 inactiveFilter = {_match:[soloSpecifier,{_contains:"inactive"}]}
 tracks = mix.groups.whose({_not:[groupFilter, masterFilter, soloFilter, safeFilter, inactiveFilter]}).name()
-tracks = (JSON.parse(JSON.stringify(tracks)))
 for (t in tracks) {
 mix.groups.byName(tracks[t]).buttons["Solo"].click()
 if (new Date().getTime()-start &gt; 1000) {
@@ -5546,7 +5537,7 @@ if (runSingle) single()
 				<key>CreationDate</key>
 				<real>479415768.360699</real>
 				<key>ModificationDate</key>
-				<real>494467989.54227</real>
+				<real>494705317.84316897</real>
 				<key>Name</key>
 				<string>Speak Soloed Tracks, Unsolo All Tracks</string>
 				<key>Triggers</key>
